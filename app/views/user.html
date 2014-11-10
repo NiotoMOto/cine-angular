@@ -1,0 +1,37 @@
+<div class="animated" ng-swipe-left="goTo('next')" ng-swipe-right="goTo('prev')">
+    <div class="row">
+        <div class="pull-left">
+            <img ng-cloak class="view profil" src="images/user/{{user.username}}.png" alt=""/>
+        </div>
+        <div class="col-md-6">
+            <h1>{{user.username}}</h1>
+        </div>
+
+    </div>
+    <div class="text-center">
+        <h1>{{totalMovies}} films</h1>
+    </div>
+    <div class="row">
+        <input type="text" class="form-control" ng-model="search.Movie.title" placeholder="Recherche">
+    </div>
+    <div ng-repeat="view in viewMovies | filter:search" class="list">
+        <a href="#/movie/{{view.MovieId}}" title="Lien vers le film"><h3 class="text-center">{{view.Movie.title}}</h3></a>
+        <div class="row view panel panel-default " >
+            <div class="col-md-2">
+                <a href="#/movie/{{view.MovieId}}" title="Lien vers le film">
+                <image class="img-responsive hover-shadow" src="http://image.tmdb.org/t/p/w45/{{view.imdbMovie.poster_path}}" />
+                </a>
+            </div>
+            <div class="col-md-8 rating">
+                <div ng-show="userService.user.id === view.User.id">
+                    <rating ng-model="view.note" max="10" readonly="isReadonly" on-hover="hoveringOver(value)" ng-change="updateView(view)" on-leave="overStar = null"></rating>
+                </div>
+            </div>
+            <div class="col-md-2 ">
+                <span class="rate">{{view.note}}</span>
+            </div>
+        </div>
+    </div>
+    <a href="" ng-click="goTo('prev')" class="ws prev hidden-sm hidden-xs"></a>
+    <a href="" ng-click="goTo('next')" class="ws next hidden-sm hidden-xs" ></a>
+</div>

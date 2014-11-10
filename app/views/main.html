@@ -1,0 +1,9 @@
+<div class="jumbotron">
+    <h1>Qui etes-vous ?</h1>
+    <form name="appEnter" ng-submit="enter()">
+      <p class="lead">
+        <select class="form-control" required ng-model="user" ng-options="user as user.username for user in users"></select>
+      </p>
+      <p><button ng-disabled="!appEnter.$valid"  type="submit" class="btn btn-primary">Entrez</button></p>
+    </form>
+</div>

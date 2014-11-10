@@ -1,0 +1,24 @@
+<div class="page-header">
+    <h1>Films
+    <small>{{totalMovies}} films</small>
+    </h1>
+</div>
+<div class="all-movies" ng-init="init()">
+    <div class="row search">
+        <input class="form-control" type="text" ng-model="search.title" placeholder="Recherche">
+    </div>
+    <div class="big-list col-md-3 col-sm-2 list" ng-repeat="movie in movies | filter:search">
+        <div class="box" style="background:url(http://image.tmdb.org/t/p/w154/{{movie.imdbMovie.poster_path}}) no-repeat 50% 50%;">
+            <a href="#/movie/{{movie.id}}">
+            <div class="overlay">
+                <div>
+                    <h4 class="title">
+                    {{movie.title}}
+                    </h4>
+                </div>
+                <span class="rate">{{movie.notes.moyenne}}</span>
+            </div>
+            </a>
+        </div>
+    </div>
+</div>

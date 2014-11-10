@@ -1,0 +1,100 @@
+<div class="page-header">
+    <h1>Ajout film
+    <small>{{currentUser.username}}</small>
+    </h1>
+</div>
+<div class="text-center">
+    <h1>{{totalMovies}} films total</h1>
+</div>
+<article class="" >
+<form class="row" ng-submit="addMovie()" name="formAddMovie">
+    <div class="form-group">
+        <ui-select ng-model="movie.movie"
+        theme="bootstrap"
+        ng-disabled="disabled"
+        reset-search-input="false"
+        style="">
+        <ui-select-match placeholder="Films...">{{movie.movie.title}}</ui-select-match>
+        <ui-select-choices repeat="movie in listMovie.results track by $index"
+        refresh="refreshMovies($select.search)"
+        refresh-delay="0">
+        <div class="row">
+            <div class="col-sm-5">
+                <image ng-if="movie.poster_path" class="img-responsive" src="http://image.tmdb.org/t/p/w45/{{movie.poster_path}}" />
+            </div>
+            <div class="col-sm-4">
+                <span ng-bind-html="movie.title  | highlight: $select.search"></span>
+            </div>
+            <div class="col-sm-3">
+                <span class="pull-right" ng-bind-html="movie.release_date | date:mediumDate"></span>
+            </div>
+        </div>
+        </ui-select-choices>
+        </ui-select>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4">
+            <label>Date</label>
+        </div>
+        <div class="col-md-8">
+            <button class="btn btn-default form-control" ng-click="open($event)" type="button"> {{date | date :"dd/MM/yyyy"  }} </button>
+            <input type="hidden" class="form-control" readonly="readonly" datepicker-popup="dd-MMMM-yy" datepicker-mode="year" ng-model="date" is-open="opened" ng- close-text="Close" ng-click="open($event)" />
+        </div>
+    </div>
+    <br><br><br>
+    <div class="form-group">
+        <div class="col-md-4">
+            <label for="prix">Prix</label>
+        </div>
+        <div class="col-md-8">
+            <input id="prix" type="text" ng-model="prix" placeholder="prix" class="form-control">
+        </div>
+    </div>
+<br><br>
+    <div class="form-group">
+        <div class="col-md-4">
+            <label for="critique">Critique</label>
+        </div>
+        <div class="col-md-8">
+            <textarea id="critique" ng-model="commentaire" placeholder="critique" class="form-control"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-8 ">
+            <div class="rating" >
+                <rating ng-model="rate" max="10" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <span class='rate' >{{rate}}</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12 text-center">
+            <button ng-disabled="!formAddMovie.$valid" class="btn btn-primary">Ajouter</button>
+        </div>
+    </div>
+</form>
+</article>
+<br><br>
+<article class="well">
+<h3 class="text-center">Films</h3>
+<div class="row">
+    <input type="text" class="form-control" ng-model="search.title" placeholder="Recherche"/>
+</div>
+<table class="table table-op">
+    <thead>
+        <th>Titre</th>
+    </thead>
+    <tbody>
+        <tr class="list" ng-repeat="movie in movies | filter:search track by $index">
+            <td>{{movie.title}}</td>
+            <td>
+                <span class="row-menu"><a href="#/movie/{{movie.id}}"><span class="glyphicon glyphicon-share"></span></a></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</article>
+<highchart id="chart1" config="highchartsNG"></highchart>

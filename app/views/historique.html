@@ -1,0 +1,34 @@
+<div class="page-header">
+    <h1>Historique
+    <small>{{user.username}}</small>
+    </h1>
+</div>
+<ul ng-init="init()" class="timeline">
+    <li ng-class-odd="'timeline-inverted'" ng-repeat="viewMovie in viewMovies | orderBy : '-date'">
+        <div title="moyenne" class="timeline-badge"><span class="note">{{viewMovie.notes.moyenne}}</span></div>
+        <div class="timeline-panel">
+            <div class="timeline-heading">
+                <h4 class="timeline-title">{{viewMovie.Movie.title}}</h4>
+                <p><small class="text-muted"><i class="glyphicon glyphicon-time"> {{viewMovie.date | date:mediumDate}}</i></small></p>
+                <div>
+
+                    <a href="#/movie/{{viewMovie.MovieId}}" title="Lien vers le film">
+                    <image class="img-responsive hover-shadow" src="http://image.tmdb.org/t/p/w154/{{viewMovie.imdbMovie.poster_path}}" />
+                    </a>
+                </div>
+                <div>
+                    <h4>Users</h4>
+                </div>
+                <div class="col-sm-2" ng-repeat="view in viewMovie.viewMovieAll">
+                    <a title="{{view.User.username}}" href="#/user/{{view.User.id}}" title="">
+                    <div class="profil hover {{view.User.username}}" ></div>
+                    </a>
+                </div>
+            </div>
+            <div class="timeline-body">
+            </div>
+        </div>
+    </li>
+</ul>
+<a href="" ng-click="goTo('prev')" class="ws prev hidden-sm hidden-xs"></a>
+<a href="" ng-click="goTo('next')" class="ws next hidden-sm hidden-xs" ></a>

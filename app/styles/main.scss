@@ -1,0 +1,596 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
+@import "bootswatch/cosmo/variables";
+
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
+// endbower
+@import "bootswatch/cosmo/bootswatch";
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* Space out content a bit */
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+input[type="text"], input[type="number"], input[type="mail"], input[type="password"], textarea {
+    color: #fff !important;
+    background-color: #222222 !important;
+    border-color: #222222 !important;
+}
+
+/* Custom page header */
+.header {
+    border-bottom: 1px solid #e5e5e5;
+    /* Make the masthead heading the same height as the navigation */
+    h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        line-height: 40px;
+        padding-bottom: 19px;
+    }
+}
+
+/* Custom page footer */
+.footer {
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+    .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+    }
+}
+
+/* Supporting marketing content */
+.marketing {
+    margin: 40px 0;
+    p + h4 {
+        margin-top: 28px;
+    }
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    }
+    /* Remove the padding we set earlier */
+    .header,
+    .marketing,
+    .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    /* Space out the masthead */
+    .header {
+        margin-bottom: 30px;
+    }
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+        border-bottom: 0;
+    }
+}
+
+.row-menu {
+    display: none;
+}
+
+.table-op tr:hover {
+    .row-menu {
+        display: inline-block;
+    }
+}
+
+.rate {
+    background-position: -182px -71px;
+    width: 66px;
+    height: 66px;
+    line-height: 66px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    font-family: tahoma;
+    padding-right: 5px;
+    background-image: url(../images/titlePageSprite-407338954._V_.png);
+    vertical-align: middle;
+}
+
+.profil {
+    width: 59px;
+    height: 71px;
+    border-radius: 200px;
+    -webkit-border-radius: 200px;
+    -moz-border-radius: 200px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+    &.nav {
+        margin-top: -30px;
+    }
+    &.Remy {
+        background: url("../images/user/Remy.png") no-repeat;
+        background-size: 59px 71px;
+    }
+    &.Aurelien {
+        background: url("../images/user/Aurelien.png") no-repeat;
+        background-size: 59px 71px;
+    }
+    &.Johann {
+        background: url("../images/user/Johann.png") no-repeat;
+        background-size: 59px 71px;
+    }
+    &.Joel {
+        background: url("../images/user/Joel.png") no-repeat;
+        background-size: 59px 71px;
+    }
+    &.Seb {
+        background: url("../images/user/Seb.png") no-repeat;
+        background-size: 59px 71px;
+    }
+    &.Anne {
+        background: url("../images/user/Anne.png") no-repeat;
+        background-size: 59px 71px;
+    }
+    &.Antoine {
+        background: url("../images/user/Antoine.png") no-repeat;
+        background-size: 59px 71px;
+    }
+    &.hover:hover {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 1.8);
+        -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 1.8);
+        -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 1.8);
+    }
+    &.draggable:hover {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 1.8);
+        -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 1.8);
+        -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 1.8);
+    }
+}
+
+.rating {
+    padding-top: 25px;
+    padding-left: 150px;
+    .glyphicon {
+        font-size: 25px;
+    }
+}
+
+.drop {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.drag-user {}
+
+[ng-drag] {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+[ng-drag] {
+    cursor: move;
+}
+
+ul.draggable-objects:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.draggable-objects li {
+    float: left;
+    display: block;
+    width: 120px;
+    height: 100px;
+}
+
+[ng-drag].drag-over {
+    border: solid 1px red;
+}
+
+[ng-drag].dragging {
+    opacity: 0.5;
+}
+
+[ng-drop] {}
+
+[ng-drop].drag-enter, .hover-shadow:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1.8);
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 1.8);
+    -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 1.8);
+}
+
+[ng-drop] div {
+    position: relative;
+}
+
+.date {
+    pointer: cursor;
+}
+
+.ws {
+    background-size: 200%;
+    position: absolute;
+    top: 41.11%;
+    z-index: 60;
+    width: 6em;
+    height: 6em;
+    top: 40.97%;
+    background-image: url(../images/arrows.png);
+    &.prev:hover {
+        background-position: 0 100%;
+    }
+    &.prev {
+        left: 0%;
+        top: 50%;
+        background-position: 0 0;
+        left: 0.52%;
+    }
+    &.next:hover {
+        background-position: 100% 100%;
+    }
+    &.next {
+        right: 0%;
+        top: 50%;
+        background-position: 100% 0;
+        right: 0.52%;
+    }
+}
+
+.animated.ng-leave {
+    display: none;
+}
+
+.animated.ng-enter {
+    -webkit-animation: pulse 0.7s;
+    -moz-animation: pulse 0.7s;
+    -ms-animation: pulse 0.7s;
+    animation: pulse 0.7s;
+    .ws {
+        display: none;
+    }
+}
+
+@mixin transform($transforms) {
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
+}
+
+.remote.ng-enter {
+    -webkit-animation: pulse 0.7s;
+    -moz-animation: pulse 0.7s;
+    -ms-animation: pulse 0.7s;
+    animation: pulse 0.7s;
+}
+
+.remote.ng-leave {
+    display: none;
+}
+
+.list.ng-enter, .list.ng-leave {
+    @include transition-duration(0.7s);
+}
+
+.list.ng-enter {
+    @include opacity(0);
+    @include transform(translateX(20px));
+}
+
+.list.ng-enter-active {
+    @include opacity(1);
+    @include transform(translateX(0px));
+}
+
+.list.ng-leave {}
+
+.list.ng-leave-active {
+    @include opacity(0);
+    @include transform(translateX(-20px));
+}
+
+.ui-select-bootstrap .ui-select-choices-row > a {
+    white-space: inherit !important;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+/*
+Time Line
+*/
+
+.timeline {
+    list-style: none;
+    padding: 20px 0 20px;
+    position: relative;
+}
+
+.timeline:before {
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 3px;
+    background-color: #eeeeee;
+    left: 50%;
+    margin-left: -1.5px;
+}
+
+.timeline > li {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.timeline > li:before,
+.timeline > li:after {
+    content: " ";
+    display: table;
+}
+
+.timeline > li:after {
+    clear: both;
+}
+
+.timeline > li:before,
+.timeline > li:after {
+    content: " ";
+    display: table;
+}
+
+.timeline > li:after {
+    clear: both;
+}
+
+.timeline > li > .timeline-panel {
+    width: 46%;
+    float: left;
+    border: 1px solid #d4d4d4;
+    border-radius: 2px;
+    padding: 20px;
+    position: relative;
+    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+}
+
+.timeline > li > .timeline-panel:before {
+    position: absolute;
+    top: 26px;
+    right: -15px;
+    display: inline-block;
+    border-top: 15px solid transparent;
+    border-left: 15px solid #ccc;
+    border-right: 0 solid #ccc;
+    border-bottom: 15px solid transparent;
+    content: " ";
+}
+
+.timeline > li > .timeline-panel:after {
+    position: absolute;
+    top: 27px;
+    right: -14px;
+    display: inline-block;
+    border-top: 14px solid transparent;
+    border-left: 14px solid #fff;
+    border-right: 0 solid #fff;
+    border-bottom: 14px solid transparent;
+    content: " ";
+}
+
+.timeline > li > .timeline-badge {
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.4em;
+    text-align: center;
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    margin-left: -25px;
+    background-color: #999999;
+    z-index: 100;
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel {
+    float: right;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel:before {
+    border-left-width: 0;
+    border-right-width: 15px;
+    left: -15px;
+    right: auto;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel:after {
+    border-left-width: 0;
+    border-right-width: 14px;
+    left: -14px;
+    right: auto;
+}
+
+.timeline-badge.primary {
+    background-color: #2e6da4 !important;
+}
+
+.timeline-badge.success {
+    background-color: #3f903f !important;
+}
+
+.timeline-badge.warning {
+    background-color: #f0ad4e !important;
+}
+
+.timeline-badge.danger {
+    background-color: #d9534f !important;
+}
+
+.timeline-badge.info {
+    background-color: #5bc0de !important;
+}
+
+.timeline-title {
+    margin-top: 0;
+    color: inherit;
+}
+
+.timeline-body > p,
+.timeline-body > ul {
+    margin-bottom: 0;
+}
+
+.timeline-body > p + p {
+    margin-top: 5px;
+}
+
+@media (max-width: 767px) {
+    ul.timeline:before {
+        left: 40px;
+    }
+    ul.timeline > li > .timeline-panel {
+        width: calc(100% - 90px);
+        width: -moz-calc(100% - 90px);
+        width: -webkit-calc(100% - 90px);
+    }
+    ul.timeline > li > .timeline-badge {
+        left: 15px;
+        margin-left: 0;
+        top: 16px;
+    }
+    ul.timeline > li > .timeline-panel {
+        float: right;
+    }
+    ul.timeline > li > .timeline-panel:before {
+        border-left-width: 0;
+        border-right-width: 15px;
+        left: -15px;
+        right: auto;
+    }
+    ul.timeline > li > .timeline-panel:after {
+        border-left-width: 0;
+        border-right-width: 14px;
+        left: -14px;
+        right: auto;
+    }
+}
+
+input.editable {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background: transparent;
+}
+
+.action-view {
+    position: absolute;
+    right: 0;
+    display: none;
+    z-index: 3;
+}
+
+.view:hover {
+    .action-view {
+        display: inline-block;
+    }
+}
+
+/*
+TimeLine
+*/
+
+.timeline-badge {
+    background-color: #222222 !important;
+    .note {
+        color: #EECE4B;
+    }
+    :hover {}
+}
+
+/*
+Liste movies
+*/
+.all-movies{
+    .search{
+        margin-bottom: 20px;
+    }
+}
+
+.big-list {
+    padding: 0 !important;
+    img {
+        margin: 0 !important;
+        overflow: hidden;
+    }
+    width: 139px;
+    height: 182px;
+}
+
+.box {
+    width: 139px;
+    height: 203px;
+    .title {
+        color: white;
+    }
+    a {
+        text-decoration: none;
+    }
+}
+
+.overlay {
+    padding-top : 30px;
+    background: rgba(0, 0, 0, 0.75);
+    text-align: center;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.box:hover .overlay {
+    opacity: 1;
+}
