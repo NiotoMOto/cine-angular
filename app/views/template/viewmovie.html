@@ -1,0 +1,45 @@
+<div class="row view remote panel panel-default text-center" >
+    <div ng-if="versionUser" class="col-md-2">
+        <a title="{{view.User.username}}" href="#/user/{{view.User.id}}" title="">
+        <div class="profil hover {{view.User.username}}" ></div>
+        </a>
+    </div>
+    <div ng-if="versionMovie" class="col-md-2">
+        <a href="#/movie/{{view.MovieId}}" title="Lien vers le film">
+        <image class="img-responsive hover-shadow" src="http://image.tmdb.org/t/p/w92/{{view.imdbMovie.poster_path}}" />
+        </a>
+    </div>
+    <div class="col-md-8 rating">
+        <p ng-if="!view.date">
+        <strong>Vue le </strong>    <span class="editDate " field="view.date"
+        update-method="updateView(view)">{{view.date | date:mediumDate}}</span>
+        </p>
+        <p ng-if="view.date">
+        <strong>Vue le </strong> {{view.date | date:mediumDate}}
+        </p>
+        <div ng-show="user.id === view.User.id">
+            <rating ng-model="view.note" max="10" readonly="isReadonly" on-hover="hoveringOver(value)" ng-change="updateView(view)" on-leave="overStar = null"></rating>
+        </div>
+    </div>
+    <div class="col-md-2 ">
+        <span class="rate">{{view.note}}</span>
+    </div>
+    <div ng-if="user.id === view.User.id" class="col-md-12">
+        <button class="action-view btn btn-sm btn-danger pull-right" ng-click="deleteView(view)">pas vu</button>
+    </div>
+    <div class="col-md-12">
+        <button class="btn btn-sm btn-default" ng-click="isCollapsed = !isCollapsed">Critique <span ng-show="!isCollapsed" class="glyphicon glyphicon-chevron-down"></span><span ng-show="isCollapsed" class="glyphicon glyphicon-chevron-up"></span></button>
+        <div collapse="isCollapsed">
+            <div class="col-md-10 well">
+                <span onaftersave="updateView(view)"  editable-textarea="view.commentaire" e-rows="7" e-cols="40" e-form="textBtnForm">
+                {{ view.commentaire || 'Pas de critique' }}
+                </span>
+            </div>
+            <div class="col-md-2">
+                <button ng-if="user.id === view.User.id" class="btn btn-xs btn-default" ng-click="textBtnForm.$show()" ng-hide="textBtnForm.$visible">
+                edit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

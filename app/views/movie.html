@@ -10,60 +10,22 @@
             <p><label>Genres :</label> <span ng-repeat="genre in idmbMovie.genres">{{genre.name}}</span></p>
             <p><label>Nationalitées :</label> <span ng-repeat="country in idmbMovie.production_countries">{{country.name}}  </span></p>
             <p><label>Note :</label><span class="rate">{{movie.notes.moyenne}}</span></p>
-            
+
         </section>
     </div>
     <div class="drop" ng-model="userDrop"  ng-drop="true" ng-drop-success="onDrop($data,$event)">
-        <div class="row view remote panel panel-default text-center" ng-repeat="view in viewMovies">
-            <div class="col-md-2">
-                <a title="{{view.User.username}}" href="#/user/{{view.User.id}}" title="">
-                <div class="profil hover {{view.User.username}}" ></div>
-                </a>
-            </div>
-            <div class="col-md-8 rating">
-                <p ng-if="!view.date">
-                <strong>Vue le </strong>    <span class="editDate " field="view.date"
-                update-method="updateView(view)">{{view.date | date:mediumDate}}</span>
-                </p>
-                <p ng-if="view.date">
-                <strong>Vue le </strong> {{view.date | date:mediumDate}}
-                </p>
-                <div ng-show="userService.user.id === view.User.id">
-                    <rating ng-model="view.note" max="10" readonly="isReadonly" on-hover="hoveringOver(value)" ng-change="updateView(view)" on-leave="overStar = null"></rating>
-                </div>
-            </div>
-            <div class="col-md-2 ">
-                <span class="rate">{{view.note}}</span>
-            </div>
-
-            <div ng-if="userService.user.id === view.User.id" class="col-md-12">
-                <button class="action-view btn btn-sm btn-danger pull-right" ng-click="deleteView(view)">pas vu</button>
-            </div>
-            <div class="col-md-12">
-                <button class="btn btn-sm btn-default" ng-click="isCollapsed = !isCollapsed">Critique <span ng-show="!isCollapsed" class="glyphicon glyphicon-chevron-down"></span><span ng-show="isCollapsed" class="glyphicon glyphicon-chevron-up"></span></button>
-                <div collapse="isCollapsed">
-                    <div class="col-md-10 well">
-                        <span onaftersave="updateView(view)"  editable-textarea="view.commentaire" e-rows="7" e-cols="40" e-form="textBtnForm">
-                        {{ view.commentaire || 'Pas de critique' }}
-                        </span>
-                    </div>
-                    <div class="col-md-2">
-                        <button ng-if="userService.user.id === view.User.id" class="btn btn-xs btn-default" ng-click="textBtnForm.$show()" ng-hide="textBtnForm.$visible">
-                        edit
-                        </button>
-                    </div>
-                </div>
-            </div>
+        <div ng-repeat="view in viewMovies">
+            <view-movie user="userService.user" version-user="true" view="view" update-list="updateList()"></view-movie>
         </div>
     </div>
-        <div class="drag-user panel panel-default row">
-            <div class="col-md-2" ng-repeat="user in userNot">
-                <div class="view draggable profil {{user.username}}"  ng-drag="true" ng-drag-data="{{user}}"  ng-model="user"></div>
-            </div>
+    <div class="drag-user panel panel-default row">
+        <div class="col-md-2" ng-repeat="user in userNot">
+            <div class="view draggable profil {{user.username}}"  ng-drag="true" ng-drag-data="{{user}}"  ng-model="user"></div>
         </div>
-        <div class="row thumbnail">
-            {{idmbMovie.overview}}
-        </div>
-        <a href="" ng-click="goTo('prev')" class="ws prev hidden-sm hidden-xs"></a>
-        <a href="" ng-click="goTo('next')" class="ws next hidden-sm hidden-xs" ></a>
     </div>
+    <div class="row thumbnail">
+        {{idmbMovie.overview}}
+    </div>
+    <a href="" ng-click="goTo('prev')" class="ws prev hidden-sm hidden-xs"></a>
+    <a href="" ng-click="goTo('next')" class="ws next hidden-sm hidden-xs" ></a>
+</div>

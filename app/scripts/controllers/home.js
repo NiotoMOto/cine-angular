@@ -78,8 +78,7 @@ angular.module('cineApp').controller('HomeCtrl', function($scope, restService, i
     }
     
     $scope.$watch('movie.movie', function(movie){
-        console.log('test movie');
-        if(!$scope.date){
+        if(!$scope.date && $scope.movie.movie){
             $scope.date = movie.release_date;
         }
     })
@@ -91,7 +90,6 @@ angular.module('cineApp').controller('HomeCtrl', function($scope, restService, i
         viewMovie.date = $scope.date ;
         viewMovie.commentaire = $scope.commentaire;
         var filter = {};
-        filter.movie = 1;
         filter.movie = movie.id;
         return viewMoviesRess.query({
             filter: true,

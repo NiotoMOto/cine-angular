@@ -16,58 +16,9 @@ angular.module('cineApp').controller('MovieCtrl', function($scope, $routeParams,
     $scope.user = userService.user;
     var user = userService.user;
     var id = $routeParams.id;
-    $scope.isCollapsed = true;
     $scope.userNot = [];
     $scope.viewMovies = [];
     $scope.users = [];
-    $scope.init = function() {
-        getMovie();
-        updateMoyenne();
-        movieRess.query().$promise.then(function(data) {
-            $scope.movies = data;
-            $scope.totalUser = data.length;
-        });
-    };
-    $scope.onDrag = function() {
-        $scope.draged = true;
-    };
-    $scope.onDrop = function(data) {
-        addView(data);
-    };
-    $scope.onDragStop = function() {
-        $scope.draged = false;
-    };
-    $scope.deleteView = function(view) {
-        viewMovieRess.remove({
-            id: view.id
-        }).$promise.then(function() {
-            toastr.error('Suppression réussie');
-            getMovie();
-        });
-    }
-    $scope.goTo = function(dir) {
-        var index = _.findIndex($scope.movies, {
-            'id': $scope.movie.id
-        });
-        switch (dir) {
-            case 'next':
-                index++;
-                if (index >= $scope.totalUser) {
-                    index = 0;
-                }
-                $location.path('/movie/' + $scope.movies[index].id);
-                break;
-            case 'prev':
-                index--;
-                if (index < 0) {
-                    index = $scope.totalUser - 1;
-                }
-                $location.path('/movie/' + $scope.movies[index].id);
-                break;
-            default:
-                break;
-        }
-    };
 
     function getUsers() {
         $scope.userNot = [];
@@ -116,14 +67,6 @@ angular.module('cineApp').controller('MovieCtrl', function($scope, $routeParams,
             });
         });
     }
-    $scope.updateView = function(view) {
-        viewMovieRess.update({
-            viewMovie: view
-        }).$promise.then(function() {
-            toastr.success('Note mise a jour');
-            updateMoyenne();
-        });
-    };
 
     function getViewsInfo() {
         var filter = true;
@@ -136,5 +79,49 @@ angular.module('cineApp').controller('MovieCtrl', function($scope, $routeParams,
             getUsers();
         });
     }
+    $scope.init = function() {
+        getMovie();
+        updateMoyenne();
+        movieRess.query().$promise.then(function(data) {
+            $scope.movies = data;
+            $scope.totalUser = data.length;
+        });
+    };
+    $scope.onDrag = function() {
+        $scope.draged = true;
+    };
+    $scope.onDrop = function(data) {
+        addView(data);
+    };
+    $scope.onDragStop = function() {
+        $scope.draged = false;
+    };
+    $scope.updateList = function() {
+        getMovie();
+        updateMoyenne();
+    }
+    $scope.goTo = function(dir) {
+        var index = _.findIndex($scope.movies, {
+            'id': $scope.movie.id
+        });
+        switch (dir) {
+            case 'next':
+                index++;
+                if (index >= $scope.totalUser) {
+                    index = 0;
+                }
+                $location.path('/movie/' + $scope.movies[index].id);
+                break;
+            case 'prev':
+                index--;
+                if (index < 0) {
+                    index = $scope.totalUser - 1;
+                }
+                $location.path('/movie/' + $scope.movies[index].id);
+                break;
+            default:
+                break;
+        }
+    };
     $scope.init();
 });

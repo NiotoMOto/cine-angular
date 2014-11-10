@@ -54,6 +54,7 @@ angular.module('cineApp').controller('UserCtrl', function($scope, $routeParams, 
     }
 
     function incraseTotal(total) {
+        $scope.totalMovies = 0 ;
         var stop = $interval(function() {
             if ($scope.totalMovies < total) {
                 $scope.totalMovies++;
@@ -71,14 +72,10 @@ angular.module('cineApp').controller('UserCtrl', function($scope, $routeParams, 
             id: id
         }).$promise;
     }
-    $scope.updateView = function(view) {
-        viewMovieRess.update({
-            viewMovie: view
-        }).$promise.then(function() {
-            toastr.success('Note mise a jour');
-        })
-    };
 
+    $scope.updateList = function(){
+         getViewsInfo()
+    }
     function getViewsInfo() {
         viewMovieRess.query({
             filter: true,
