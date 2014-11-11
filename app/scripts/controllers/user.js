@@ -49,7 +49,6 @@ angular.module('cineApp').controller('UserCtrl', function($scope, $routeParams, 
         userRess.query().$promise.then(function(data) {
             $scope.totalUser = data.length;
             $scope.users = data;
-            console.log($scope.totalUser);
         });
     }
 

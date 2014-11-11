@@ -55,7 +55,6 @@ angular.module('cineApp').controller('HistoriqueCtrl', function($scope, $routePa
         userRess.query().$promise.then(function(data) {
             $scope.totalUser = data.length;
             $scope.users = data;
-            console.log($scope.totalUser);
         });
     }
 

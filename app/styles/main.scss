@@ -594,3 +594,42 @@ Liste movies
 .box:hover .overlay {
     opacity: 1;
 }
+
+.rank-star {
+    position: relative;
+}
+.rank-star:hover {
+    
+}
+
+.classement {
+    tr:nth-child(1), tr:nth-child(2), tr:nth-child(3) {
+        .rank-star:before {
+            content: "\f005";
+            font-family: FontAwesome;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: inherit;
+            /*--adjust as necessary--*/
+            font-size: 60px;
+        }
+        .number{
+            display: none;
+        }
+    }
+    tr:nth-child(1) {
+        .rank-star:before {
+            color: #EFD35D;
+        }
+    }
+    tr:nth-child(2) {
+        .rank-star:before {
+            color: #848482;
+        }
+    }
+    tr:nth-child(3) {
+         .rank-star:before {
+            color: #94684D;
+        }
+    }
+}
