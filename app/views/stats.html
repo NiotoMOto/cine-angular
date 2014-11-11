@@ -1,0 +1,42 @@
+<div class="page-header">
+    <h1>Statistiques</h1>
+</div>
+<table class="classement table table-hover col-md-12 table">
+    <caption><h2>Vues</h2></caption>
+    <tbody>
+        <tr  ng-repeat="user in users | orderBy: '-views.length'">
+            <td class="col-md-3 text-center">
+                <span class="rank-star"></span>
+                <h3 class="number">{{$index + 1 }}</h3>
+            </td>
+            <td class="col-xs-3 text-center">
+                <h3>{{user.views.length}}</h3>
+            </td>
+            <td class="col-xs-6 text-center">
+                <a title="Johann" href="#/user/{{user.id}}">
+                <div class="profil hover {{user.username}}"></div>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="classement table table-hover col-md-12 table">
+    <caption><h2>Note moyenne</h2></caption>
+    <tbody>
+        <tr  ng-repeat="user in users | orderBy: '-notes.moyenne'">
+            <td class="col-md-3 text-center">
+                <span class="rank-star"></span>
+                <h3 class="number">{{$index + 1 }}</h3>
+            </td>
+            <td class="col-xs-3 text-center">
+                <h3>{{user.notes.moyenne | number:1}}</h3>
+            </td>
+            <td class="col-xs-6 text-center">
+                <a title="Johann" href="#/user/{{user.id}}">
+                <div class="profil hover {{user.username}}"></div>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>

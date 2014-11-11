@@ -14,6 +14,7 @@ angular.module('cineApp').controller('HistoriqueCtrl', function($scope, $routePa
     var viewMovieRess = restService.getRessource('viewMovie');
     var userRess = restService.getRessource('user');
     $scope.currentUser = userService.user
+    $scope.dates = [];
     $scope.init = function() {
     	getUser();
     }
@@ -84,11 +85,12 @@ angular.module('cineApp').controller('HistoriqueCtrl', function($scope, $routePa
                 getMovie(viewMovie.Movie.imdbId).then(function(data) {
                     $scope.viewMovies[key].imdbMovie = data;
                 });
+                if(viewMovie.date){
+                    $scope.dates.push(viewMovie.date);
+                }
                 noteMovieRess.calcul({id : viewMovie.Movie.id}).$promise.then(function(note){
                     $scope.viewMovies[key].notes = note;
                 });
-                console.log(viewMovie);
-
             });
         }).then(function() {
             //récupère les avis des autres utisateurs pour chaque film de l'utilisateur de la page

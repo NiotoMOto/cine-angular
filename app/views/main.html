@@ -1,9 +1,20 @@
 <div class="jumbotron">
     <h1>Qui etes-vous ?</h1>
     <form name="appEnter" ng-submit="enter()">
-      <p class="lead">
-        <select class="form-control" required ng-model="user" ng-options="user as user.username for user in users"></select>
-      </p>
-      <p><button ng-disabled="!appEnter.$valid"  type="submit" class="btn btn-primary">Entrez</button></p>
-    </form>
+        <p class="lead">
+    <select class="form-control" required ng-model="user" ng-options="user as user.username for user in users"></select>
+    </p>
+    <p><button ng-disabled="!appEnter.$valid"  type="submit" class="btn btn-primary">Entrez</button></p>
+</form>
+</div>
+<div class="jumbotron">
+<h2>Actualitées</h2>
+<h3>11 novembre 2014 </h3>
+<p class="text-danger">La base de donnée a malencontreusement été vidé</p>
+<p class="text-success">La page stats a été ajouté</p>
+<p class="text-warning">La date lors de l'ajout d'un film prend par défaut la date de sortie du film ( ne peut pour l'instant pas être changé )</p>
+<h3>09 novembre 2014 </h3>
+<p class="text-success">La page Tous les films a été ajouté</p>
+<h3>06 novembre 2014 </h3>
+<p class="text-success">Sur la page film possibilité d'ajouter un ami avec un glissé déposé avec la tête de celui ci </p>
 </div>

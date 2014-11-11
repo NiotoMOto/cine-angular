@@ -34,6 +34,7 @@ angular.module('cineApp').controller('MovieCtrl', function($scope, $routeParams,
 
     function addView(user) {
         var viewMovie = {};
+        viewMovie.date = $scope.idmbMovie.release_date;
         viewMoviesRess.save({
             viewMovie: viewMovie,
             movie: $scope.movie,
