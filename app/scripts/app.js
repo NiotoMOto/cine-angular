@@ -21,7 +21,8 @@ angular
     'highcharts-ng',
     'ngDraggable',
     'xeditable',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'angular-loading-bar'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -53,9 +54,17 @@ angular
         templateUrl: 'views/movies.html',
         controller: 'MoviesCtrl'
       })
-      .when('/stats', {
+      .when('/stats/user', {
         templateUrl: 'views/stats.html',
         controller: 'StatsCtrl'
+      })
+      .when('/logs', {
+        templateUrl: 'views/logs.html',
+        controller: 'LogsCtrl'
+      })
+      .when('/stats/movie', {
+        templateUrl: 'views/stats/movie.html',
+        controller: 'StatsMovieCtrl'
       })
       .otherwise({
         redirectTo: '/'

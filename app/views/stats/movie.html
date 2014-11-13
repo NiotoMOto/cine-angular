@@ -1,0 +1,25 @@
+<div class="page-header">
+    <h1>Statistiques
+    <small>Films</small></h1>
+</div>
+<table class="classement table table-hover col-md-12 table">
+    <caption><h2>Note</h2></caption>
+    <tbody>
+        <tr  ng-repeat="movie in movies | orderBy: '-notes.moyenne'">
+            <td class="col-md-2 text-center">
+                <span class="rank-star"></span>
+                <h3 class="number">{{$index + 1 }}</h3>
+            </td>
+            <td class="col-xs-2 text-center">
+                <h3>{{movie.notes.moyenne | number:2}}</h3>
+            </td>
+            <td class="col-xs-4 text-center">
+                <h4>
+                <a title="Johann" href="#/movie/{{movie.id}}">
+                {{movie.title}}
+                </a>
+                </h4>
+            </td>
+        </tr>
+    </tbody>
+</table>

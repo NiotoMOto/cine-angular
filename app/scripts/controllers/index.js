@@ -14,7 +14,7 @@ angular.module('cineApp').controller('IndexCtrl', function($scope, $cookieStore,
             if (name === '/') {
                 regex = new RegExp('[\/]$', 'g');
             } else {
-                regex = new RegExp('[\/]' + name+'s?', 'g');
+                regex = new RegExp('^[\/]' + name+'s?', 'g');
             }
             return ($location.path().match(regex));
         }

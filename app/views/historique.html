@@ -5,7 +5,7 @@
 </div>
 <ul ng-init="init()" class="timeline">
     <li ng-class-odd="'timeline-inverted'" ng-repeat="viewMovie in viewMovies | orderBy : '-date'">
-        <div title="moyenne" class="timeline-badge"><span class="note">{{viewMovie.notes.moyenne}}</span></div>
+        <div title="moyenne" class="timeline-badge"><span class="note">{{viewMovie.notes.moyenne  | number:2}}</span></div>
         <div class="timeline-panel">
             <div class="timeline-heading">
                 <h4 class="timeline-title">{{viewMovie.Movie.title}}</h4>

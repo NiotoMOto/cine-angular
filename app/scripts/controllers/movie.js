@@ -6,7 +6,7 @@
  * # MovieCtrl
  * Controller of the cineApp
  */
-angular.module('cineApp').controller('MovieCtrl', function($scope, $routeParams, $rootScope, userService, imdbService, restService, $location) {
+angular.module('cineApp').controller('MovieCtrl', function($scope, $routeParams, $rootScope, userService, imdbService, restService, $location, historyService) {
     var movieRess = restService.getRessource('movie');
     var viewMoviesRess = restService.getRessource('viewMovie');
     var viewMovieRess = restService.getRessource('viewMovie');
@@ -14,6 +14,7 @@ angular.module('cineApp').controller('MovieCtrl', function($scope, $routeParams,
     var noteMovieRess = restService.getRessource('movie', 'note');
     var userRess = restService.getRessource('user');
     $scope.user = userService.user;
+    $scope.currentUser = userService.user;
     var user = userService.user;
     var id = $routeParams.id;
     $scope.userNot = [];
@@ -41,7 +42,7 @@ angular.module('cineApp').controller('MovieCtrl', function($scope, $routeParams,
             user: user
         }).$promise.then(function() {
             toastr.success('Avis enregistré');
-            //$scope.userNot = _.remove($scope.userNot, function(_user) { return _user.id == user.id; });
+            historyService.add("a ajouté "+user.username+" sur le film " , "create", $scope.currentUser, $scope.movie);
             getViewsInfo();
         });
     }
@@ -60,6 +61,7 @@ angular.module('cineApp').controller('MovieCtrl', function($scope, $routeParams,
             id: id
         }).$promise.then(function(data) {
             $scope.movie = data;
+            updateMoyenne();
             getViewsInfo();
             imdbMovieRessource.get({
                 id: data.imdbId
@@ -82,7 +84,6 @@ angular.module('cineApp').controller('MovieCtrl', function($scope, $routeParams,
     }
     $scope.init = function() {
         getMovie();
-        updateMoyenne();
         movieRess.query().$promise.then(function(data) {
             $scope.movies = data;
             $scope.totalUser = data.length;

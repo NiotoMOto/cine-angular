@@ -425,7 +425,7 @@ Time Line
     left: 50%;
     margin-left: -25px;
     background-color: #999999;
-    z-index: 100;
+    z-index: 1;
     border-top-right-radius: 50%;
     border-top-left-radius: 50%;
     border-bottom-right-radius: 50%;
@@ -598,9 +598,8 @@ Liste movies
 .rank-star {
     position: relative;
 }
-.rank-star:hover {
-    
-}
+
+.rank-star:hover {}
 
 .classement {
     tr:nth-child(1), tr:nth-child(2), tr:nth-child(3) {
@@ -613,9 +612,18 @@ Liste movies
             /*--adjust as necessary--*/
             font-size: 60px;
         }
-        .number{
+        .number {
             display: none;
         }
+    }
+    tr:nth-last-child(1) {
+        content: "\e601";
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+        /*--adjust as necessary--*/
+        font-size: 60px;
     }
     tr:nth-child(1) {
         .rank-star:before {
@@ -628,8 +636,127 @@ Liste movies
         }
     }
     tr:nth-child(3) {
-         .rank-star:before {
+        .rank-star:before {
             color: #94684D;
         }
     }
 }
+
+/**
+Logs
+*/
+
+.timeline.log {
+    .icone-t:before {}
+    .delete:before {
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+        content: "\f1f8";
+    }
+    .update:before {
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+        content: "\f044";
+    }
+    .create:before {
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+        content: "\f067";
+    }
+}
+
+/*
+NavBar
+*/
+
+.navbar {
+    margin-top: 15px;
+    z-index: 5;
+}
+
+.container {
+    margin-top: 40px;
+}
+
+body {
+    //background-image : url('../images/background.jpg');
+}
+
+.background-image {
+    background-image: url(../images/background.jpg);
+    background-size: cover;
+    display: block;
+    opacity: 0.1;
+    filter: opacity(0.1);
+    -webkit-filter: opacity(0.1);
+    filter: opacity(0.1);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    z-index: -50;
+    top: 0;
+    width: 100%;
+}
+
+/*
+Background boyd
+*/
+
+/*
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white !important;
+}
+
+@-webkit-keyframes MOVE-BG {
+    from {
+        -webkit-transform: translateX(0);
+    }
+    to { 
+        -webkit-transform: translateX(-3000px);
+    }
+}
+
+.container {
+    background-color: white !important;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+    padding : 20px;
+     border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+}
+
+.background-image {
+    background-image: url(../images/background.jpg);
+    background-size: cover;
+    display: block;
+    right: -3000px;
+    filter: blur(10px);
+    filter: brightness(50px);
+    -webkit-filter: blur(10px);
+    -webkit-filter: opacity(0.1);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    z-index: -50;
+    top: 0;
+
+    -webkit-animation-name: MOVE-BG;
+    -webkit-animation-duration: 120s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+}
+
+*/

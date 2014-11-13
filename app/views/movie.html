@@ -9,7 +9,7 @@
             <p><label>Réalisé par :</label></p>
             <p><label>Genres :</label> <span ng-repeat="genre in idmbMovie.genres">{{genre.name}}</span></p>
             <p><label>Nationalitées :</label> <span ng-repeat="country in idmbMovie.production_countries">{{country.name}}  </span></p>
-            <p><label>Note :</label><span class="rate">{{movie.notes.moyenne}}</span></p>
+            <p><label>Note :</label><span class="rate">{{movie.notes.moyenne | number:2}}</span></p>
 
         </section>
     </div>
