@@ -8,7 +8,7 @@
  */
 angular.module('cineApp').service('restService', function restService($resource) {
     var API_URL = 'http://srv.guillemoto.com:8080/api';
-    //var API_URL = 'http://localhost:8080/api';
+    // var API_URL = 'http://localhost:8080/api';
     return {
         getRessource: function(shema, control) {
             return $resource(API_URL + '/' + shema + '/:id', {}, {

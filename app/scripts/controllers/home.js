@@ -106,7 +106,7 @@ angular.module('cineApp').controller('HomeCtrl', function($scope, restService, i
                         viewMovie: viewMovie
                     }).$promise.then(function(){
                         toastr.success('Avis mis a jour');
-                        historyService.add("a mise à jour son avis sur", "update", currentUser, movie);
+                        historyService.add("a mis à jour son avis sur", "update", currentUser, movie);
                         resetForm();
                     });
                 }

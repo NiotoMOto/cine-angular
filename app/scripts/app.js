@@ -22,7 +22,8 @@ angular
     'ngDraggable',
     'xeditable',
     'ui.bootstrap',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'checklist-model'
   ])
   .config(function ($routeProvider) {
     $routeProvider

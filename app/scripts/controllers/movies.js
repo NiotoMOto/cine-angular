@@ -13,8 +13,13 @@ angular.module('cineApp').controller('MoviesCtrl', function($scope, restService,
     var noteMovieRess = restService.getRessource('movie', 'note');
     var viewMovieRess = restService.getRessource('viewMovie');
     var userRess = restService.getRessource('user');
+    $scope.identity = angular.identity;
+    $scope.movies = [];
+    $scope.toggled = true;
+    $scope.genres = [];
+    $scope.genres.selecteds = [];
     $scope.init = function() {
-    	$scope.totalMovies = 0;
+        $scope.totalMovies = 0;
         getViewsInfo();
     }
 
@@ -34,17 +39,46 @@ angular.module('cineApp').controller('MoviesCtrl', function($scope, restService,
                     stop = undefined;
                 }
             }
-        }, 70);
+        }, 10);
     }
+
+    $scope.resetGenres = function(){
+        $scope.genres.selected = [];
+    }
+    $scope.selectAllGenres = function(){
+        $scope.genres.selected = angular.copy($scope.genres);
+    }
+
+    function hasGenre(movie) {
+        var result = false ;
+        angular.forEach(movie.imdbMovie.genres, function(genre) {
+            if (_.contains($scope.genres.selected, genre.name)) {
+                result =  true;
+            }
+        });
+        return result;
+    }
+    $scope.filterGenre = function(movie) {
+        return hasGenre(movie);
+    }
+    _.mixin({
+        'findByValues': function(collection, property, values) {
+            return _.filter(collection, function(item) {
+                return _.contains(values, item[property]);
+            });
+        }
+    });
 
     function getViewsInfo() {
         movieRess.query().$promise.then(function(data) {
             $scope.movies = data;
+            // $scope.movies.push(data[0]);
             incraseTotal($scope.movies.length);
-            
             //récupère les avis de l'utilisateur de la page
             angular.forEach($scope.movies, function(m, key) {
                 getMovie(m.imdbId).then(function(data) {
+                    $scope.genres = _.union($scope.genres, _.map(data.genres, 'name'));
+                    $scope.genres.selected = angular.copy($scope.genres);
                     $scope.movies[key].imdbMovie = data;
                 });
                 noteMovieRess.calcul({

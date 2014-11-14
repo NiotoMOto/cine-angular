@@ -17,7 +17,6 @@ angular.module('cineApp').controller('StatsMovieCtrl', function($scope, restServ
                 id: m.id
             }).$promise.then(function(note) {
                 $scope.movies[key].notes = note;
-                console.log(note);
             });
         });
     })
