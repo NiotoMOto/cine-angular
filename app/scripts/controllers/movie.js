@@ -52,7 +52,6 @@ angular.module('cineApp').controller('MovieCtrl', function($scope, $routeParams,
             id: id
         }).$promise.then(function(data) {
             $scope.movie.notes = data;
-            console.log(data);
         });
     }
 
