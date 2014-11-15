@@ -11,29 +11,49 @@ angular.module('cineApp').controller('UserCtrl', function($scope, $routeParams, 
     var viewMovieRess = restService.getRessource('viewMovie');
     var imdbMovieRessource = imdbService.getRessource('movie');
     var userRess = restService.getRessource('user');
+    $scope.template = {};
+    $scope.template.route = $routeParams.cat;
     $scope.init = function() {
-    	$rootScope.animation = 'slide';
+        $rootScope.animation = 'slide';
         $scope.totalMovies = 0;
-        getViewsInfo();
         getUser();
+        switch ($scope.template.route) {
+            case 'films':
+                $scope.template.url = 'views/usertemplate.html';
+                break;
+            case 'logs':
+                $scope.template.url = 'views/logs.html'
+                break;
+            case 'historique':
+                $scope.template.url = 'views/historique.html';
+                break;
+            case 'stats':
+                $scope.template.url = 'views/stats.html'
+                break;
+            default:
+            	$scope.template.route = 'films';
+                $scope.template.url = 'views/usertemplate.html';
+        };
     };
     $scope.goTo = function(dir) {
-		var index = _.findIndex($scope.users, {'id' : $scope.user.id}) ;
-		$rootScope.sensAnimated = dir;
+        var index = _.findIndex($scope.users, {
+            'id': $scope.user.id
+        });
+        $rootScope.sensAnimated = dir;
         switch (dir) {
             case 'next':
-            	index ++;
-	            if(index >= $scope.totalUser){
-	            	index = 0;	
-	            }
-	            $location.path('/user/'+ $scope.users[index].id);
+                index++;
+                if (index >= $scope.totalUser) {
+                    index = 0;
+                }
+                $location.path('/user/' + $scope.users[index].id + '/' + $scope.template.route);
                 break;
             case 'prev':
-            	index --;
-            	if(index < 0){
-	            	index = $scope.totalUser-1;		
-	            }
-	            $location.path('/user/'+ $scope.users[index].id);
+                index--;
+                if (index < 0) {
+                    index = $scope.totalUser - 1;
+                }
+                $location.path('/user/' + $scope.users[index].id + '/' + $scope.template.route);
                 break;
             default:
                 break;
@@ -49,44 +69,6 @@ angular.module('cineApp').controller('UserCtrl', function($scope, $routeParams, 
         userRess.query().$promise.then(function(data) {
             $scope.totalUser = data.length;
             $scope.users = data;
-        });
-    }
-
-    function incraseTotal(total) {
-        $scope.totalMovies = 0 ;
-        var stop = $interval(function() {
-            if ($scope.totalMovies < total) {
-                $scope.totalMovies++;
-            } else {
-                if (angular.isDefined(stop)) {
-                    $interval.cancel(stop);
-                    stop = undefined;
-                }
-            }
-        }, 70);
-    }
-
-    function getMovie(id) {
-        return imdbMovieRessource.get({
-            id: id
-        }).$promise;
-    }
-
-    $scope.updateList = function(){
-         getViewsInfo()
-    }
-    function getViewsInfo() {
-        viewMovieRess.query({
-            filter: true,
-            user: id
-        }).$promise.then(function(data) {
-            $scope.viewMovies = data;
-            incraseTotal(data.length);
-            angular.forEach($scope.viewMovies, function(viewMovie, key) {
-                getMovie(viewMovie.Movie.imdbId).then(function(data) {
-                    $scope.viewMovies[key].imdbMovie = data;
-                });
-            });
         });
     }
     $scope.init();

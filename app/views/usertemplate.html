@@ -1,0 +1,15 @@
+<div class="header">
+    <h2>Films</h1>
+</div>
+<div ng-controller="UsercontrollertemplateCtrl" class="animated" ng-swipe-left="goTo('next')" ng-swipe-right="goTo('prev')">
+    <div class="text-center">
+        <h1>{{totalMovies}} films</h1>
+    </div>
+    <div class="row">
+        <input type="text" class="form-control" ng-model="search.Movie.title" placeholder="Recherche">
+    </div>
+    <div ng-repeat="view in viewMovies | filter:search" class="list">
+        <a href="#/movie/{{view.MovieId}}" title="Lien vers le film"><h3 class="text-center">{{view.Movie.title}}</h3></a>
+        <view-movie user="userService.user" version-movie="true" view="view" update-list="updateList()"></view-movie>
+    </div>
+</div>

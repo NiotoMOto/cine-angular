@@ -35,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#/user/{{userService.user.id}}"><div class="profil nav {{userService.user.username}}" ></div> </a>
+                    <a class="navbar-brand" href="#/user/{{userService.user.id}}/films"><div class="profil nav {{userService.user.username}}" ></div> </a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
@@ -54,7 +54,7 @@
                     </ul>
                 </div>
             </nav>
-            <div class="container animated {{animation}} {{sensAnimated}}" ng-view=""></div>
+            <div class="{{animated}} container" ng-view=""></div>
         </div>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
         <script>
@@ -131,6 +131,7 @@
         <script src="scripts/services/historyservice.js"></script>
         <script src="scripts/controllers/logs.js"></script>
         <script src="scripts/controllers/stats/movie.js"></script>
+        <script src="scripts/controllers/usercontrollertemplate.js"></script>
         <!-- endbuild -->
     </body>
 </html>

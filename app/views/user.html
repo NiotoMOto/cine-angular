@@ -1,4 +1,4 @@
-<div class="animated" ng-swipe-left="goTo('next')" ng-swipe-right="goTo('prev')">
+<div class="" ng-swipe-left="goTo('next')" ng-swipe-right="goTo('prev')">
     <div class="row">
         <div class="pull-left">
             <img ng-cloak class="view profil" src="images/user/{{user.username}}.png" alt=""/>
@@ -6,18 +6,14 @@
         <div class="col-md-6">
             <h1>{{user.username}}</h1>
         </div>
-
     </div>
-    <div class="text-center">
-        <h1>{{totalMovies}} films</h1>
-    </div>
-    <div class="row">
-        <input type="text" class="form-control" ng-model="search.Movie.title" placeholder="Recherche">
-    </div>
-    <div ng-repeat="view in viewMovies | filter:search" class="list">
-        <a href="#/movie/{{view.MovieId}}" title="Lien vers le film"><h3 class="text-center">{{view.Movie.title}}</h3></a>
-            <view-movie user="userService.user" version-movie="true" view="view" update-list="updateList()"></view-movie>
-    </div>
-    <a href="" ng-click="goTo('prev')" class="ws prev hidden-sm hidden-xs"></a>
-    <a href="" ng-click="goTo('next')" class="ws next hidden-sm hidden-xs" ></a>
+    <br>
+    <ul class="nav nav-pills">
+        <li ng-class="{active : isActiveMenu('films')}"><a href="#/user/{{user.id}}/films">Films</a></li>
+        <li ng-class="{active : isActiveMenu('historique')}" role="presentation"><a href="#/user/{{user.id}}/historique">Historique <i class="fa fa-clock-o"></i></a></li>
+        <li ng-class="{active : isActiveMenu('logs')}" role="presentation"><a href="#/user/{{user.id}}/logs">Logs</a></li>
+    </ul>
+    <div class="slide-animate" ng-include="template.url"></div>
 </div>
+<a href="" ng-click="goTo('prev')" class="ws prev hidden-sm hidden-xs"></a>
+<a href="" ng-click="goTo('next')" class="ws next hidden-sm hidden-xs" ></a>

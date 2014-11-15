@@ -1,25 +1,29 @@
-<ul ng-init="init()" class="timeline log">
-    <li ng-class-odd="'timeline-inverted'" ng-repeat="log in logs | orderBy : '-createdAt'">
-        <div title="moyenne" ng-class="{danger: log.type === 'delete', success: log.type === 'create', info: log.type === 'update'}" class="timeline-badge"><span class="icone-t {{log.type}}">{{viewMovie.notes.moyenne}}</span></div>
-        <div class="timeline-panel">
-            <div class="timeline-heading">
-                <a title="{{log.User.username}}" href="#/user/{{log.User.id}}" title="">
-                <div class="profil hover {{log.User.username}}" ></div>
-                </a>
-                <div>
-                	<a href="#/user/{{log.UserId}}">{{log.User.username}}</a> {{log.message}} <a href="#/movie/{{log.MovieId}}" title="">{{log.Movie.title}}</a>
-                </div>
-                <h4 class="timeline-title"></h4>
-                <p><small class="text-muted"><i class="glyphicon glyphicon-time"> {{log.createdAt | date:mediumDate}}</i></small></p>
-                <div>
-                    <a href="#/movie/{{log.MovieId}}" title="Lien vers le film">
+<div ng-controller="LogsCtrl">
+<div class="header">
+    <h2>Logs</h1>
+</div>
+    <ul ng-init="init()" class="timeline log">
+        <li ng-class-odd="'timeline-inverted'" ng-repeat="log in logs | orderBy : '-createdAt'">
+            <div title="moyenne" ng-class="{danger: log.type === 'delete', success: log.type === 'create', info: log.type === 'update'}" class="timeline-badge"><span class="icone-t {{log.type}}">{{viewMovie.notes.moyenne}}</span></div>
+            <div class="timeline-panel">
+                <div class="timeline-heading">
+                    <a title="{{log.User.username}}" href="#/user/{{log.User.id}}" title="">
+                    <div class="profil hover {{log.User.username}}" ></div>
                     </a>
+                    <div>
+                        <a href="#/user/{{log.UserId}}">{{log.User.username}}</a> {{log.message}} <a href="#/movie/{{log.MovieId}}" title="">{{log.Movie.title}}</a>
+                    </div>
+                    <h4 class="timeline-title"></h4>
+                    <p><small class="text-muted"><i class="glyphicon glyphicon-time"> {{log.createdAt | date:mediumDate}}</i></small></p>
+                    <div>
+                        <a href="#/movie/{{log.MovieId}}" title="Lien vers le film">
+                        </a>
+                    </div>
                 </div>
-
+            </div>
+            <div class="timeline-body">
             </div>
         </div>
-        <div class="timeline-body">
-        </div>
-    </div>
-</li>
+    </li>
 </ul>
+</div>

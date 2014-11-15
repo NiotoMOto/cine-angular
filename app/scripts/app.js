@@ -47,6 +47,10 @@ angular
         templateUrl: 'views/user.html',
         controller: 'UserCtrl'
       })
+      .when('/user/:id/:cat', {
+        templateUrl: 'views/user.html',
+        controller: 'UserCtrl'
+      })
       .when('/historique/:id', {
         templateUrl: 'views/historique.html',
         controller: 'HistoriqueCtrl'
@@ -64,6 +68,14 @@ angular
         controller: 'StatsCtrl'
       })
       .when('/logs', {
+        templateUrl: 'views/logs.html',
+        controller: 'LogsCtrl'
+      })
+      .when('/logs/user/:user', {
+        templateUrl: 'views/logs.html',
+        controller: 'LogsCtrl'
+      })
+      .when('/logs/movie/:movie', {
         templateUrl: 'views/logs.html',
         controller: 'LogsCtrl'
       })

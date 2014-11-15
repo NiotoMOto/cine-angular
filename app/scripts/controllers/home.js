@@ -49,7 +49,7 @@ angular.module('cineApp').controller('HomeCtrl', function($scope, restService, i
                     stop = undefined;
                 }
             }
-        }, 70);
+        }, 10);
     }
     $scope.refreshMovies = function(search) {
         if (search) {
