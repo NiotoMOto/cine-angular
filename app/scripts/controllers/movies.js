@@ -6,13 +6,15 @@
  * # MoviesCtrl
  * Controller of the cineApp
  */
-angular.module('cineApp').controller('MoviesCtrl', function($scope, restService, imdbService, $interval) {
+angular.module('cineApp').controller('MoviesCtrl', function($scope, restService, imdbService, $interval, $routeParams) {
     var moviesRess = restService.getRessource('movie');
     var imdbMovieRessource = imdbService.getRessource('movie');
     var movieRess = restService.getRessource('movie');
     var noteMovieRess = restService.getRessource('movie', 'note');
     var viewMovieRess = restService.getRessource('viewMovie');
     var userRess = restService.getRessource('user');
+    var genre = $routeParams.genre;
+    console.log(genre);
     $scope.identity = angular.identity;
     $scope.movies = [];
     $scope.toggled = true;
@@ -41,21 +43,22 @@ angular.module('cineApp').controller('MoviesCtrl', function($scope, restService,
             }
         }, 10);
     }
-
-    $scope.resetGenres = function(){
+    $scope.resetGenres = function() {
         $scope.genres.selected = [];
     }
-    $scope.selectAllGenres = function(){
+    $scope.selectAllGenres = function() {
         $scope.genres.selected = angular.copy($scope.genres);
     }
 
     function hasGenre(movie) {
-        var result = false ;
-        angular.forEach(movie.imdbMovie.genres, function(genre) {
-            if (_.contains($scope.genres.selected, genre.name)) {
-                result =  true;
-            }
-        });
+        var result = false;
+        if (movie.imdbMovie) {
+            angular.forEach(movie.imdbMovie.genres, function(genre) {
+                if (_.contains($scope.genres.selected, genre.name)) {
+                    result = true;
+                }
+            });
+        }
         return result;
     }
     $scope.filterGenre = function(movie) {
@@ -78,7 +81,12 @@ angular.module('cineApp').controller('MoviesCtrl', function($scope, restService,
             angular.forEach($scope.movies, function(m, key) {
                 getMovie(m.imdbId).then(function(data) {
                     $scope.genres = _.union($scope.genres, _.map(data.genres, 'name'));
-                    $scope.genres.selected = angular.copy($scope.genres);
+                    $scope.genres.selected =[];
+                    if (genre) {
+                        $scope.genres.selected.push(genre);
+                    } else {
+                        $scope.genres.selected = angular.copy($scope.genres);
+                    }
                     $scope.movies[key].imdbMovie = data;
                 });
                 noteMovieRess.calcul({

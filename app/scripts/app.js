@@ -55,6 +55,10 @@ angular
         templateUrl: 'views/movies.html',
         controller: 'MoviesCtrl'
       })
+      .when('/movies/genre/:genre', {
+        templateUrl: 'views/movies.html',
+        controller: 'MoviesCtrl'
+      })
       .when('/stats/user', {
         templateUrl: 'views/stats.html',
         controller: 'StatsCtrl'
