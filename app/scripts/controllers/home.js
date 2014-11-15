@@ -81,7 +81,7 @@ angular.module('cineApp').controller('HomeCtrl', function($scope, restService, i
         if(!$scope.date && $scope.movie.movie){
             $scope.date = movie.release_date;
         }
-    })
+    });
 
     function addViewMovie(movie) {
         var viewMovie = {};
@@ -106,7 +106,7 @@ angular.module('cineApp').controller('HomeCtrl', function($scope, restService, i
                         viewMovie: viewMovie
                     }).$promise.then(function(){
                         toastr.success('Avis mis a jour');
-                        historyService.add("a mis à jour son avis sur", "update", currentUser, movie);
+                        historyService.add('a mis à jour son avis sur', 'update', currentUser, movie);
                         resetForm();
                     });
                 }
@@ -117,7 +117,7 @@ angular.module('cineApp').controller('HomeCtrl', function($scope, restService, i
                     user: currentUser
                 }).$promise.then(function() {
                     toastr.success('Avis enregistré');
-                    historyService.add("a marqué comme vu", "create", currentUser, movie);
+                    historyService.add('a marqué comme vu', 'create', currentUser, movie);
                     getMovies();
                     resetForm();
                 });
@@ -141,7 +141,7 @@ angular.module('cineApp').controller('HomeCtrl', function($scope, restService, i
                     movie: movie
                 }).$promise.then(function(data) {
                     addViewMovie(data);
-                    historyService.add("a ajouté le film", "create", currentUser, data);
+                    historyService.add('a ajouté le film', 'create', currentUser, data);
                     getMovies();
                 });
             }

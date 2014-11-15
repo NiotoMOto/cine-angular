@@ -8,8 +8,6 @@
  */
 angular.module('cineApp').controller('UserCtrl', function($scope, $routeParams, $rootScope, userService, imdbService, restService, $interval, $location) {
     var id = $routeParams.id;
-    var viewMovieRess = restService.getRessource('viewMovie');
-    var imdbMovieRessource = imdbService.getRessource('movie');
     var userRess = restService.getRessource('user');
     $scope.template = {};
     $scope.template.route = $routeParams.cat;
@@ -22,18 +20,18 @@ angular.module('cineApp').controller('UserCtrl', function($scope, $routeParams, 
                 $scope.template.url = 'views/usertemplate.html';
                 break;
             case 'logs':
-                $scope.template.url = 'views/logs.html'
+                $scope.template.url = 'views/logs.html';
                 break;
             case 'historique':
                 $scope.template.url = 'views/historique.html';
                 break;
             case 'stats':
-                $scope.template.url = 'views/stats.html'
+                $scope.template.url = 'views/stats.html';
                 break;
             default:
-            	$scope.template.route = 'films';
+                $scope.template.route = 'films';
                 $scope.template.url = 'views/usertemplate.html';
-        };
+        }
     };
     $scope.goTo = function(dir) {
         var index = _.findIndex($scope.users, {

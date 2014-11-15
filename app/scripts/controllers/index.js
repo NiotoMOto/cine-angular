@@ -18,7 +18,7 @@ angular.module('cineApp').controller('IndexCtrl', function($scope, $cookieStore,
             regex = new RegExp('^[\/]' + name + 's?', 'g');
         }
         return ($location.path().match(regex));
-    }
+    };
     $scope.isActiveMenu = function(name) {
             var regex;
             if (name === '/') {
@@ -27,6 +27,6 @@ angular.module('cineApp').controller('IndexCtrl', function($scope, $cookieStore,
                 regex = new RegExp('[\/]' + name + '$', 'g');
             }
             return ($location.path().match(regex));
-        }
+        };
         //$scope.user = $cookieStore.get('user');
 });

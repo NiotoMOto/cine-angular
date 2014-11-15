@@ -13,13 +13,13 @@ angular.module('cineApp').directive('editDate', function() {
             updateMethod: '&',
             field: '='
         },
-        controller: function($scope, $element) {
+        controller: function($scope) {
             $scope.openDatePicker = function() {
                 $scope.opened = true;
             };
         },
-        link: function postLink(scope, element, attrs) {
-            scope.$watch('field', function(newval, oldvalue) {
+        link: function postLink(scope) {
+            scope.$watch('field', function(newval) {
                 if (newval) {
                     scope.updateMethod();
                 }

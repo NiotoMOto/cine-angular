@@ -7,12 +7,9 @@
  * Controller of the cineApp
  */
 angular.module('cineApp').controller('MoviesCtrl', function($scope, restService, imdbService, $interval, $routeParams) {
-    var moviesRess = restService.getRessource('movie');
     var imdbMovieRessource = imdbService.getRessource('movie');
     var movieRess = restService.getRessource('movie');
     var noteMovieRess = restService.getRessource('movie', 'note');
-    var viewMovieRess = restService.getRessource('viewMovie');
-    var userRess = restService.getRessource('user');
     var genre = $routeParams.genre;
     console.log(genre);
     $scope.identity = angular.identity;
@@ -23,7 +20,7 @@ angular.module('cineApp').controller('MoviesCtrl', function($scope, restService,
     $scope.init = function() {
         $scope.totalMovies = 0;
         getViewsInfo();
-    }
+    };
 
     function getMovie(id) {
         return imdbMovieRessource.get({
@@ -45,10 +42,10 @@ angular.module('cineApp').controller('MoviesCtrl', function($scope, restService,
     }
     $scope.resetGenres = function() {
         $scope.genres.selected = [];
-    }
+    };
     $scope.selectAllGenres = function() {
         $scope.genres.selected = angular.copy($scope.genres);
-    }
+    };
 
     function hasGenre(movie) {
         var result = false;
@@ -63,7 +60,7 @@ angular.module('cineApp').controller('MoviesCtrl', function($scope, restService,
     }
     $scope.filterGenre = function(movie) {
         return hasGenre(movie);
-    }
+    };
     _.mixin({
         'findByValues': function(collection, property, values) {
             return _.filter(collection, function(item) {
@@ -95,6 +92,6 @@ angular.module('cineApp').controller('MoviesCtrl', function($scope, restService,
                     $scope.movies[key].notes = note;
                 });
             });
-        })
-    };
+        });
+    }
 });

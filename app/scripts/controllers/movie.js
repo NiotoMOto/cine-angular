@@ -15,7 +15,6 @@ angular.module('cineApp').controller('MovieCtrl', function($scope, $routeParams,
     var userRess = restService.getRessource('user');
     $scope.user = userService.user;
     $scope.currentUser = userService.user;
-    var user = userService.user;
     var id = $routeParams.id;
     $scope.userNot = [];
     $scope.viewMovies = [];
@@ -42,7 +41,7 @@ angular.module('cineApp').controller('MovieCtrl', function($scope, $routeParams,
             user: user
         }).$promise.then(function() {
             toastr.success('Avis enregistré');
-            historyService.add("a ajouté "+user.username+" sur le film " , "create", $scope.currentUser, $scope.movie);
+            historyService.add('a ajouté '+user.username+' sur le film ' , 'create', $scope.currentUser, $scope.movie);
             getViewsInfo();
         });
     }
@@ -71,7 +70,6 @@ angular.module('cineApp').controller('MovieCtrl', function($scope, $routeParams,
     }
 
     function getViewsInfo() {
-        var filter = true;
         var movie = $scope.movie.id;
         viewMovieRess.query({
             filter: true,
@@ -100,7 +98,7 @@ angular.module('cineApp').controller('MovieCtrl', function($scope, $routeParams,
     $scope.updateList = function() {
         getMovie();
         updateMoyenne();
-    }
+    };
     $scope.goTo = function(dir) {
         var index = _.findIndex($scope.movies, {
             'id': $scope.movie.id

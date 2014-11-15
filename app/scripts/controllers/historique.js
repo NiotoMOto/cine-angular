@@ -9,15 +9,14 @@
 angular.module('cineApp').controller('HistoriqueCtrl', function($scope, $routeParams, userService,$rootScope, imdbService, restService, $location) {
 	var id = $routeParams.id;
     var imdbMovieRessource = imdbService.getRessource('movie');
-    var movieRess = restService.getRessource('movie');
     var noteMovieRess = restService.getRessource('movie','note');
     var viewMovieRess = restService.getRessource('viewMovie');
     var userRess = restService.getRessource('user');
-    $scope.currentUser = userService.user
+    $scope.currentUser = userService.user;
     $scope.dates = [];
     $scope.init = function() {
     	getUser();
-    }
+    };
 
 
 
@@ -66,7 +65,6 @@ angular.module('cineApp').controller('HistoriqueCtrl', function($scope, $routePa
     }
 
     function getViewsUser(movie) {
-        var filter = true;
         return viewMovieRess.query({
             filter: true,
             movie: movie.id
@@ -100,5 +98,5 @@ angular.module('cineApp').controller('HistoriqueCtrl', function($scope, $routePa
                 });
             });
         });
-    };
+    }
 });

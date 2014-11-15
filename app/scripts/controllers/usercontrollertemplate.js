@@ -74,8 +74,8 @@ angular.module('cineApp').controller('UsercontrollertemplateCtrl', function($sco
         }).$promise;
     }
     $scope.updateList = function() {
-        getViewsInfo()
-    }
+        getViewsInfo();
+    };
 
     function getViewsInfo() {
         viewMovieRess.query({
