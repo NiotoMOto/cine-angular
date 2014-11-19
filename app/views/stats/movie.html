@@ -5,13 +5,13 @@
 <table class="classement table table-hover col-md-12 table">
     <caption><h2>Note</h2></caption>
     <tbody>
-        <tr  ng-repeat="movie in movies | orderBy: '-notes.moyenne'">
+        <tr  ng-repeat="movie in movies | orderBy: '-moyenne'">
             <td class="col-md-2 text-center">
                 <span class="rank-star"></span>
                 <h3 class="number">{{$index + 1 }}</h3>
             </td>
             <td class="col-xs-2 text-center">
-                <h3>{{movie.notes.moyenne | number:2}}</h3>
+                <h3>{{movie.moyenne | number:2}}</h3>
             </td>
             <td class="col-xs-4 text-center">
                 <h4>

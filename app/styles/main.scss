@@ -1,11 +1,31 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
+
+
+
 @import "bootswatch/cosmo/variables";
+$well-bg : $navbar-default-bg ;
+
+
 
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 @import "bootswatch/cosmo/bootswatch";
+
+
+
+
+/*
+bootstrap
+*/
+
+.well{
+    color : darken($navbar-default-color,20%);
+    legend{
+        color : darken($navbar-default-color, 10%);
+    }
+}
 
 .browsehappy {
     margin: 0.2em 0;
@@ -702,6 +722,49 @@ body {
     z-index: -50;
     top: 0;
     width: 100%;
+}
+
+
+/*
+Blockquotes
+*/
+/* Override the bootstrap style */
+blockquote {
+    border-left: none;
+}
+
+/* Insert the pseudo element - replicating what FontAwesome does */
+blockquote:before {
+    content: "\f10d"; 
+    font-family: FontAwesome;
+    float: left;
+    margin-right: 10px;
+}
+
+
+
+/*
+main container
+*/
+
+.main-container{
+    margin-top: 20px;
+}
+
+
+/**
+stats 
+*/
+
+.stat-panel{
+    @extend  .panel;
+    @extend  .panel-default;
+    margin : 20px;
+    background-color : #EBEBEB ;
+    &.chart{
+     background-color : #FEFEFE ;
+    }
+    
 }
 
 /*

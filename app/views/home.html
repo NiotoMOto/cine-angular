@@ -77,24 +77,3 @@
     </div>
 </form>
 </article>
-<br><br>
-<article class="well">
-<h3 class="text-center">Films</h3>
-<div class="row">
-    <input type="text" class="form-control" ng-model="search.title" placeholder="Recherche"/>
-</div>
-<table class="table table-op">
-    <thead>
-        <th>Titre</th>
-    </thead>
-    <tbody>
-        <tr class="list" ng-repeat="movie in movies | filter:search track by $index">
-            <td>{{movie.title}}</td>
-            <td>
-                <span class="row-menu"><a href="#/movie/{{movie.id}}"><span class="glyphicon glyphicon-share"></span></a></span>
-            </td>
-        </tr>
-    </tbody>
-</table>
-</article>
-<highchart id="chart1" config="highchartsNG"></highchart>

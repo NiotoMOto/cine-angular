@@ -91,6 +91,7 @@ angular
       userService.user =  $cookieStore.get('user');
      editableOptions.theme = 'bs3';
     $rootScope.$on( '$routeChangeStart', function() {
+      $rootScope.container = 'container';
       if (userService.user === null) {
           $location.path('/');
       }

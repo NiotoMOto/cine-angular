@@ -26,20 +26,25 @@
     </div>
     <div ng-if="user.id === view.User.id" class="col-md-12">
         <button class="action-view btn btn-sm btn-danger pull-right" ng-click="deleteView(view)">pas vu</button>
+        <br><br>
     </div>
     <div class="col-md-12">
-        <button class="btn btn-sm btn-default" ng-click="isCollapsed = !isCollapsed">Critique <span ng-show="!isCollapsed" class="glyphicon glyphicon-chevron-down"></span><span ng-show="isCollapsed" class="glyphicon glyphicon-chevron-up"></span></button>
-        <div collapse="isCollapsed">
-            <div class="col-md-10 well">
-                <span onaftersave="updateView(view)"  editable-textarea="view.commentaire" e-rows="7" e-cols="40" e-form="textBtnForm">
-                {{ view.commentaire || 'Pas de critique' }}
-                </span>
-            </div>
-            <div class="col-md-2">
-                <button ng-if="user.id === view.User.id" class="btn btn-xs btn-default" ng-click="textBtnForm.$show()" ng-hide="textBtnForm.$visible">
-                edit
-                </button>
-            </div>
+        <div ng-class="{well-sm: view.commentaire}" class="col-md-12 ">
+            <span onaftersave="updateView(view)"  editable-textarea="view.commentaire" e-rows="7" e-cols="40" e-form="textBtnForm">
+            <blockquote ng-if="view.commentaire" cite="">
+                <p>{{ view.commentaire}}</p>
+            </blockquote>
+            </span>
+        </div>
+        <div class="col-md-12 text-center">
+            <button ng-if="user.id === view.User.id" class="btn btn-xs btn-default" ng-click="textBtnForm.$show()" ng-hide="textBtnForm.$visible">
+            <span ng-if="view.commentaire">
+            edit
+            </span>
+            <span ng-if="!view.commentaire">
+            Ajouter une critique
+            </span>
+            </button>
         </div>
     </div>
 </div>
