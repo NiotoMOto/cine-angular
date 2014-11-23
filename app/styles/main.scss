@@ -1,29 +1,39 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-
-
-
+$icon-custom-path: "fonts/";
 
 @import "bootswatch/cosmo/variables";
-$well-bg : $navbar-default-bg ;
 
-
+$well-bg: $navbar-default-bg;
 
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 @import "bootswatch/cosmo/bootswatch";
 
+@font-face {
+    font-family: "Flaticon";
+    src: url("fonts/flaticon.eot");
+    src: url("fonts/flaticon.eot#iefix") format("embedded-opentype"), url("fonts/flaticon.woff") format("woff"), url("fonts/flaticon.ttf") format("truetype"), url("fonts/flaticon.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
 
 
+/*
+jvectorMap
+*/
+.jvectormap-container {
+    height: 300px;
+}
 
 /*
 bootstrap
 */
 
-.well{
-    color : darken($navbar-default-color,20%);
-    legend{
-        color : darken($navbar-default-color, 10%);
+.well {
+    color: darken($navbar-default-color, 20%);
+    legend {
+        color: darken($navbar-default-color, 10%);
     }
 }
 
@@ -615,6 +625,10 @@ Liste movies
     opacity: 1;
 }
 
+/*
+rank
+*/
+
 .rank-star {
     position: relative;
 }
@@ -631,6 +645,13 @@ Liste movies
             text-decoration: inherit;
             /*--adjust as necessary--*/
             font-size: 60px;
+        }
+        .rank-toilet:before {
+            font-family: Flaticon;
+            font-size: 60px;
+            font-style: normal;
+            margin-left: 20px;
+            content: "\e000";
         }
         .number {
             display: none;
@@ -649,14 +670,23 @@ Liste movies
         .rank-star:before {
             color: #EFD35D;
         }
+        .rank-toilet:before {
+            color: #EFD35D;
+        }
     }
     tr:nth-child(2) {
         .rank-star:before {
             color: #848482;
         }
+        .rank-toilet:before {
+            color: #848482;
+        }
     }
     tr:nth-child(3) {
         .rank-star:before {
+            color: #94684D;
+        }
+        .rank-toilet:before {
             color: #94684D;
         }
     }
@@ -724,7 +754,6 @@ body {
     width: 100%;
 }
 
-
 /*
 Blockquotes
 */
@@ -735,36 +764,32 @@ blockquote {
 
 /* Insert the pseudo element - replicating what FontAwesome does */
 blockquote:before {
-    content: "\f10d"; 
+    content: "\f10d";
     font-family: FontAwesome;
     float: left;
     margin-right: 10px;
 }
 
-
-
 /*
 main container
 */
 
-.main-container{
-    margin-top: 20px;
+.main-container {
+    margin-top: 50px;
 }
-
 
 /**
 stats 
 */
 
-.stat-panel{
-    @extend  .panel;
-    @extend  .panel-default;
-    margin : 20px;
-    background-color : #EBEBEB ;
-    &.chart{
-     background-color : #FEFEFE ;
+.stat-panel {
+    @extend .panel;
+    @extend .panel-default;
+    margin: 20px;
+    background-color: #EBEBEB;
+    &.chart {
+        background-color: #FEFEFE;
     }
-    
 }
 
 /*

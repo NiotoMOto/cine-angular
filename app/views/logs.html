@@ -1,10 +1,11 @@
 <div ng-controller="LogsCtrl">
-<div class="header">
-    <h2>Logs</h1>
-</div>
+    <div class="header">
+        <h2>Activité</h1>
+    </div>
     <ul ng-init="init()" class="timeline log">
         <li ng-class-odd="'timeline-inverted'" ng-repeat="log in logs | orderBy : '-createdAt'">
-            <div title="moyenne" ng-class="{danger: log.type === 'delete', success: log.type === 'create', info: log.type === 'update'}" class="timeline-badge"><span class="icone-t {{log.type}}">{{viewMovie.notes.moyenne}}</span></div>
+            <div title="moyenne" ng-class="{danger: log.type === 'delete', success: log.type === 'create', info: log.type === 'update'}" class="timeline-badge"><span class="icone-t {{log.type}}">{{viewMovie.notes.moyenne}}</span>
+            </div>
             <div class="timeline-panel">
                 <div class="timeline-heading">
                     <a title="{{log.User.username}}" href="#/user/{{log.User.id}}" title="">
@@ -23,7 +24,6 @@
             </div>
             <div class="timeline-body">
             </div>
-        </div>
-    </li>
-</ul>
+        </li>
+    </ul>
 </div>

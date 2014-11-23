@@ -21,9 +21,9 @@ angular
     'highcharts-ng',
     'ngDraggable',
     'xeditable',
-    'ui.bootstrap',
     'angular-loading-bar',
-    'checklist-model'
+    'checklist-model',
+    'iso-3166-country-codes'
   ])
   .config(function ($routeProvider) {
     $routeProvider
