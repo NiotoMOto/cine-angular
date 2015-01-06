@@ -20,6 +20,12 @@ angular.module('cineApp').directive('viewMovie', function() {
         controller: function($scope, restService, historyService) {
             $scope.isCollapsed = true;
             var viewMovieRess = restService.getRessource('viewMovie');
+            $scope.overNote = {};
+            $scope.hoveringOver = function(value){
+                $scope.overNote.note = value;
+                $scope.percent = 100 * (value / 10);
+            };
+
             $scope.updateView = function(view) {
                 viewMovieRess.update({
                     viewMovie: view

@@ -209,7 +209,7 @@ input[type="text"], input[type="number"], input[type="mail"], input[type="passwo
 
 .rating {
     padding-top: 25px;
-    padding-left: 150px;
+    padding-left: 75px;
     .glyphicon {
         font-size: 25px;
     }
@@ -833,6 +833,10 @@ box HOme
     margin: 0 0 10px 0;
     white-space: nowrap;
     padding: 0;
+}
+
+.ogf{
+    vertical-align: center;
 }
 
 /*

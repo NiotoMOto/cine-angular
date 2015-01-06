@@ -20,13 +20,15 @@
         <p ng-if="viewOptions.createdAt">
         <strong>Ajouté le </strong> {{view.Movie.createdAt | date:mediumDate}}
         </p>
-        
-        <div ng-show="user.id === view.User.id">
-            <rating ng-model="view.note" max="10" readonly="isReadonly" on-hover="hoveringOver(value)" ng-change="updateView(view)" on-leave="overStar = null"></rating>
+        <div class="row" ng-if="user.id === view.User.id">
+            <div class="ogf col-md-2"><a ng-click="view.note = 0;updateView(view)" title="OGF" class="btn btn-xs btn-default "><i class="glyphicon glyphicon-thumbs-down"></i></a></div>
+            <div class="col-md-10" >
+                <rating ng-model="view.note" max="10" readonly="isReadonly" on-hover="hoveringOver(value)" ng-change="updateView(view)" on-leave="overNote.note = null"></rating>
+            </div>
         </div>
     </div>
     <div class="col-md-2 ">
-        <span class="rate">{{view.note}}</span>
+        <span   class="rate"> {{ overNote.note || view.note }}</span>
     </div>
     <div ng-if="user.id === view.User.id" class="col-md-12">
         <button class="action-view btn btn-sm btn-danger pull-right" ng-click="deleteView(view)">pas vu</button>

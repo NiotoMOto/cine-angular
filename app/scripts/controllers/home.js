@@ -62,8 +62,9 @@ angular.module('cineApp').controller('HomeCtrl', function($scope, restService, i
         }
     };
     $scope.isReadonly = false;
+    $scope.overStar = {};
     $scope.hoveringOver = function(value) {
-        $scope.overStar = value;
+        $scope.overStar.note = value;
     };
     $scope.open = function($event) {
         $event.preventDefault();
