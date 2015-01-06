@@ -15,7 +15,7 @@ angular.module('cineApp').controller('StatsMovieCtrl', function($scope, restServ
     $scope.map.selectedRegions = [];
     $scope.statsLoaded = false;
     $scope.paysStats = {};
-    $rootScope.container = 'container-fluid';
+    // $rootScope.container = 'container-fluid';
 
     function getMovie(id) {
         return imdbMovieRessource.get({

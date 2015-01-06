@@ -92,7 +92,8 @@ angular
      editableOptions.theme = 'bs3';
     $rootScope.$on( '$routeChangeStart', function() {
       $rootScope.container = 'container';
-      if (userService.user === null) {
+      console.log(userService.user);
+      if (_.isUndefined(userService.user)) {
           $location.path('/');
       }
     });

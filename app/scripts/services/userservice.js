@@ -9,7 +9,6 @@
  */
 angular.module('cineApp')
   .factory('userService', function userService($cookieStore) {
-  	var user = null ;
     return{
     	save: function(user){
   			this.user = user;

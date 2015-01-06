@@ -14,9 +14,13 @@
         <strong>Vue le </strong>    <span class="editDate " field="view.date"
         update-method="updateView(view)">{{view.date | date:mediumDate}}</span>
         </p>
-        <p ng-if="view.date">
+        <p ng-if="view.date && ! viewOptions.createdAt">
         <strong>Vue le </strong> {{view.date | date:mediumDate}}
         </p>
+        <p ng-if="viewOptions.createdAt">
+        <strong>Ajouté le </strong> {{view.Movie.createdAt | date:mediumDate}}
+        </p>
+        
         <div ng-show="user.id === view.User.id">
             <rating ng-model="view.note" max="10" readonly="isReadonly" on-hover="hoveringOver(value)" ng-change="updateView(view)" on-leave="overStar = null"></rating>
         </div>
@@ -29,7 +33,7 @@
         <br><br>
     </div>
     <div class="col-md-12">
-        <div ng-class="{well-sm: view.commentaire}" class="col-md-12 ">
+        <div ng-class="{'well-sm': view.commentaire}" class="col-md-12 ">
             <span onaftersave="updateView(view)"  editable-textarea="view.commentaire" e-rows="7" e-cols="40" e-form="textBtnForm">
             <blockquote ng-if="view.commentaire" cite="">
                 <p>{{ view.commentaire}}</p>

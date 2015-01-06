@@ -2,71 +2,51 @@
     <h1>Statistiques
     <small>Films</small></h1>
 </div>
-<div class="col-md-6">
+<div class="row">
     <div class="col-md-6">
-        <vectormap map="map" style="height: 300px"></vectormap>
-    </div>
-    <div class="col-md-6">
-        <table ng-if="map.selectedRegions[0]" class="table">
-            <caption >{{map.selectedRegions[0] | isoCountry }}</caption>
-            <thead>
-                <tr>
-                    <th>Films</th>
-                </tr>
-            </thead>
+        <table class="classement table table-hover col-md-12 table">
+            <caption><h2>Top</h2></caption>
             <tbody>
-                <tr  ng-repeat="movie in selectedRegion">
-                    <td>
-                        <a href="#/movie/{{movie.id}}">{{movie.title}}</a>
+                <tr  ng-repeat="movie in movies | orderBy: '-moyenne'">
+                    <td class="col-md-2 text-center">
+                        <span class="rank-star"></span>
+                        <h3 class="number">{{$index + 1 }}</h3>
+                    </td>
+                    <td class="col-xs-2 text-center">
+                        <h3>{{movie.moyenne | number:2}}</h3>
+                    </td>
+                    <td class="col-xs-4 text-center">
+                        <h4>
+                        <a href="#/movie/{{movie.id}}">
+                        {{movie.title}}
+                        </a>
+                        </h4>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-</div>
-<div class="col-md-3">
-    <table class="classement table table-hover col-md-12 table">
-        <caption><h2>Top</h2></caption>
-        <tbody>
-            <tr  ng-repeat="movie in movies | orderBy: '-moyenne'">
-                <td class="col-md-2 text-center">
-                    <span class="rank-star"></span>
-                    <h3 class="number">{{$index + 1 }}</h3>
-                </td>
-                <td class="col-xs-2 text-center">
-                    <h3>{{movie.moyenne | number:2}}</h3>
-                </td>
-                <td class="col-xs-4 text-center">
-                    <h4>
-                    <a href="#/movie/{{movie.id}}">
-                    {{movie.title}}
-                    </a>
-                    </h4>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<div class="col-md-3">
-    <table class="classement table table-hover col-md-12 table">
-        <caption><h2>Bottom</h2></caption>
-        <tbody>
-            <tr  ng-repeat="movie in moviesworst | orderBy: 'moyenne'">
-                <td class="col-md-2 text-center">
-                    <span class="rank-toilet"></span>
-                    <h3 class="number">{{$index + 1 }}</h3>
-                </td>
-                <td class="col-xs-2 text-center">
-                    <h3>{{movie.moyenne | number:2}}</h3>
-                </td>
-                <td class="col-xs-4 text-center">
-                    <h4>
-                    <a href="#/movie/{{movie.id}}">
-                    {{movie.title}}
-                    </a>
-                    </h4>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="col-md-6">
+        <table class="classement table table-hover col-md-12 table">
+            <caption><h2>Bottom</h2></caption>
+            <tbody>
+                <tr  ng-repeat="movie in moviesworst | orderBy: 'moyenne'">
+                    <td class="col-md-2 text-center">
+                        <span class="rank-toilet"></span>
+                        <h3 class="number">{{$index + 1 }}</h3>
+                    </td>
+                    <td class="col-xs-2 text-center">
+                        <h3>{{movie.moyenne | number:2}}</h3>
+                    </td>
+                    <td class="col-xs-4 text-center">
+                        <h4>
+                        <a href="#/movie/{{movie.id}}">
+                        {{movie.title}}
+                        </a>
+                        </h4>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

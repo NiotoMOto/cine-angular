@@ -28,6 +28,7 @@ angular.module('cineApp').controller('MoviesCtrl', function($scope, restService,
         }).$promise;
     }
 
+
     function incraseTotal(total) {
         var stop = $interval(function() {
             if ($scope.totalMovies < total) {

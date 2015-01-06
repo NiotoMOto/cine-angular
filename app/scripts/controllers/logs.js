@@ -16,14 +16,14 @@ angular.module('cineApp').controller('LogsCtrl', function($scope, historyService
             user: user
         }).$promise.then(function(data) {
             $scope.logs = data;
-        })
+        });
     } else if (movie) {
         historyRess.query({
         	filter : true,
             movie: movie
         }).$promise.then(function(data) {
             $scope.logs = data;
-        })
+        });
     } else {
         historyService.getAll().then(function(data) {
             $scope.logs = data;

@@ -1,32 +1,59 @@
-<div class="jumbotron">
-    <h1>Qui etes-vous ?</h1>
-    <form name="appEnter" ng-submit="enter()">
-        <p class="lead">
-    <select class="form-control" required ng-model="user" ng-options="user as user.username for user in users"></select>
-    </p>
-    <p><button ng-disabled="!appEnter.$valid"  type="submit" class="btn btn-primary">Entrez</button></p>
-</form>
+<div class="  row">
+    <div class="col-md-offset-3 col-md-6">
+        <div class="panel well panel-default">
+            <div class="">
+                <h1>Qui etes-vous ?</h1>
+            </div>
+            <div class="panel-body">
+                <form name="appEnter" ng-submit="enter()">
+                <p class="lead"> <select class="form-control" placeholder="Pseudos" required ng-model="user" ng-options="user as user.username for user in users"></select></p>
+                <p class="text-center"><button ng-disabled="!appEnter.$valid"  type="submit" class="btn btn-primary">Entrez</button></p>
+            </div>
+        </form>
+    </div>
 </div>
-<div class="jumbotron">
-<h2>Actualitées</h2>
-<h3>17 novembre 2014 </h3>
-<p class="text-success">Ajout de stats utilisateurs : critique (nombre de caractères écris) et notes ( historgrame) </p>
-<h3>15 novembre 2014 </h3>
-<p class="text-success"> Access aux films, a l'historique et aux "logs" via la page utilisateurs </p>
-<h3>14 novembre 2014 </h3>
-<p class="text-success">Ajout de filtres par genres de films dans la page tous les films</p>
-<h3>12 novembre 2014 </h3>
-<p class="text-active"><strong>Prévu : Une limite a l'affiche du nombre de films dans la page Historique et stats avec ou sans pagination</strong></p>
-<p class="text-success">Page stats films - </p>
-<p class="text-warning">Barre de menu fixé en haut</p>
-<p class="text-warning">Corrections mineurs sur les note moyennes</p>
-<h3>11 novembre 2014 </h3>
-<p class="text-danger">La base de donnée a malencontreusement été vidé</p>
-<p class="text-success">Ajout de la page logs ou vous pourrez voir les dernières actions sur le site</p>
-<p class="text-success">La page stats a été ajouté</p>
-<p class="text-warning">La date lors de l'ajout d'un film prend par défaut la date de sortie du film ( ne peut pour l'instant pas être changé )</p>
-<h3>09 novembre 2014 </h3>
-<p class="text-success">La page Tous les films a été ajouté</p>
-<h3>06 novembre 2014 </h3>
-<p class="text-success">Sur la page film possibilité d'ajouter un ami avec un glissé déposé avec la tête de celui ci </p>
+</div>
+<div class="row">
+<div class="col-md-6">
+    <div class="panel panel-default">
+        <div class="well">
+            <h2>Actualitées</h2>
+        </div>
+        <h3>29 novembre 2014 </h3>
+        <p class="text-success">Page d'acceuille revue avec les derniers films ajoutées</p>
+        <h3>23 novembre 2014 </h3>
+        <p class="text-success">Stats films ajout d'une carte</p>
+        <h3>17 novembre 2014 </h3>
+        <p class="text-success">Ajout de stats utilisateurs : critique (nombre de caractères écris) et notes ( historgrame) </p>
+        <h3>15 novembre 2014 </h3>
+        <p class="text-success"> Access aux films, a l'historique et aux "logs" via la page utilisateurs </p>
+        <h3>14 novembre 2014 </h3>
+        <p class="text-success">Ajout de filtres par genres de films dans la page tous les films</p>
+        <h3>12 novembre 2014 </h3>
+        <p class="text-active"><strong>Prévu : Une limite a l'affiche du nombre de films dans la page Historique et stats avec ou sans pagination</strong></p>
+        <p class="text-success">Page stats films - </p>
+        <p class="text-warning">Barre de menu fixé en haut</p>
+        <p class="text-warning">Corrections mineurs sur les note moyennes</p>
+        <h3>11 novembre 2014 </h3>
+        <p class="text-danger">La base de donnée a malencontreusement été vidé</p>
+        <p class="text-success">Ajout de la page logs ou vous pourrez voir les dernières actions sur le site</p>
+        <p class="text-success">La page stats a été ajouté</p>
+        <p class="text-warning">La date lors de l'ajout d'un film prend par défaut la date de sortie du film ( ne peut pour l'instant pas être changé )</p>
+        <h3>09 novembre 2014 </h3>
+        <p class="text-success">La page Tous les films a été ajouté</p>
+        <h3>06 novembre 2014 </h3>
+        <p class="text-success">Sur la page film possibilité d'ajouter un ami avec un glissé déposé avec la tête de celui ci </p>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="panel panel-default">
+        <div class="well ">
+            <h2>Derniers films ajoutés</h2>
+        </div>
+        <div class="">
+            <div ng-repeat="movie in viewMovies | orderBy:'-createdAt' |limitTo:10 ">
+                <view-movie user="userService.user" view-options="viewOptions" view="movie" version-movie="true" view="view" ></view-movie>
+            </div>
+        </div>
+    </div>
 </div>

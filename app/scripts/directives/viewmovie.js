@@ -14,7 +14,8 @@ angular.module('cineApp').directive('viewMovie', function() {
             view: '=',
             user: '=',
             versionUser: '=',
-            versionMovie: '='
+            versionMovie: '=',
+            viewOptions : '='
         },
         controller: function($scope, restService, historyService) {
             $scope.isCollapsed = true;

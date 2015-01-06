@@ -48,6 +48,7 @@ bootstrap
 body {
     padding-top: 20px;
     padding-bottom: 20px;
+    background-color : #FEFEFE;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -790,6 +791,48 @@ stats
     &.chart {
         background-color: #FEFEFE;
     }
+}
+
+/*
+box HOme
+*/
+
+.small-box {
+    position: relative;
+    display: block;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    margin-bottom: 15px;
+}
+
+.small-box > .inner {
+    padding: 10px;
+}
+
+.small-box > .small-box-footer {
+    position: relative;
+    text-align: center;
+    padding: 3px 0;
+    color: #fff;
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+
+.bg-aqua {
+    background-color: #00c0ef !important;
+    color: #f9f9f9 !important;
+}
+
+.small-box h3 {
+    font-size: 38px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    white-space: nowrap;
+    padding: 0;
 }
 
 /*
