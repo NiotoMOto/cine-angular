@@ -13,15 +13,19 @@ angular.module('cineApp').controller('StatsCtrl', function($scope, restService, 
     $scope.highchartsNotes = {
         series: [],
         xAxis: {
-            categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+            categories: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
         },
         options: {
             chart: {
                 type: 'column'
-            }
+            },
+            tooltip: {
+                headerFormat: 'Pour la note <strong>{point.key}</strong><br>',
+                valueSuffix: ' %'
+            },
         },
         title: {
-            text: 'Notes'
+            text: 'Notes (%)'
         },
         loading: true
     };
@@ -41,6 +45,9 @@ angular.module('cineApp').controller('StatsCtrl', function($scope, restService, 
         },
         loading: true
     };
+    $scope.nullsToTop = function(obj) {
+        return (angular.isDefined(obj.team) ? 0 : -1);
+    };
 
     function getUsers() {
         userRess.query({
@@ -52,13 +59,13 @@ angular.module('cineApp').controller('StatsCtrl', function($scope, restService, 
                     id: user.id
                 }).$promise.then(function(data) {
                     $scope.users[key].notes = data;
-                    console.log(data.commSize);
                     $scope.highchartsCritique.series[0].data.push([
                         $scope.users[key].username,
                         data.commSize,
                     ]);
-                    console.log($scope.highchartsCritique.series);
-                    console.log($scope.highchartsNotes.series);
+                    _.forEach(data.noteTab, function(val, key) {
+                        data.noteTab[key] = (Math.round(((val / data.count) * 100) * 100) / 100) || 0;
+                    });
                     $scope.highchartsNotes.series.push({
                         name: $scope.users[key].username,
                         data: data.noteTab

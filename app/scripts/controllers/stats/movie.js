@@ -14,6 +14,7 @@ angular.module('cineApp').controller('StatsMovieCtrl', function($scope, restServ
     $scope.map ={};
     $scope.map.selectedRegions = [];
     $scope.statsLoaded = false;
+    $rootScope.container = 'container-fluid';
     $scope.paysStats = {};
     // $rootScope.container = 'container-fluid';
 
@@ -24,13 +25,13 @@ angular.module('cineApp').controller('StatsMovieCtrl', function($scope, restServ
     }
     noteMovieRess.calcul({
         order: 'desc',
-        limit: '10'
+        limit: '100'
     }).$promise.then(function(data) {
         $scope.movies = data.elements;
     });
     noteMovieRess.calcul({
         order: 'asc',
-        limit: '10'
+        limit: '100'
     }).$promise.then(function(data) {
         $scope.moviesworst = data.elements;
     });

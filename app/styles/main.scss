@@ -18,6 +18,8 @@ $well-bg: $navbar-default-bg;
     font-style: normal;
 }
 
+$panel-color : #FFFFFF; 
+$bg-color : #F0F0F0;
 
 /*
 jvectorMap
@@ -25,6 +27,8 @@ jvectorMap
 .jvectormap-container {
     height: 300px;
 }
+
+
 
 /*
 bootstrap
@@ -48,7 +52,7 @@ bootstrap
 body {
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color : #FEFEFE;
+    background-color: $bg-color;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -306,10 +310,10 @@ ul.draggable-objects:after {
 }
 
 .animated.ng-enter {
-    -webkit-animation: pulse 0.7s;
-    -moz-animation: pulse 0.7s;
-    -ms-animation: pulse 0.7s;
-    animation: pulse 0.7s;
+    -webkit-animation: pulse 0.3s;
+    -moz-animation: pulse 0.3s;
+    -ms-animation: pulse 0.3s;
+    animation: pulse 0.3s;
     .ws {
         display: none;
     }
@@ -379,7 +383,7 @@ Time Line
     position: absolute;
     content: " ";
     width: 3px;
-    background-color: #eeeeee;
+    background-color: darken($bg-color, 30%);
     left: 50%;
     margin-left: -1.5px;
 }
@@ -416,6 +420,7 @@ Time Line
     border-radius: 2px;
     padding: 20px;
     position: relative;
+    background-color : $panel-color;
     -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
 }
@@ -630,13 +635,35 @@ Liste movies
 rank
 */
 
+.movie-classement{
+       background-color : $panel-color;
+}
+
 .rank-star {
     position: relative;
+}
+
+.imdb-icon{
+    background-image: url(../images/titlePageSprite-407338954._V_.png);
+    background-position: -158px -216px;
+    width: 40px;
+    height: 38px;
+    line-height: 66px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    font-family: tahoma;
+    float: left;
+    padding-right: 5px;
 }
 
 .rank-star:hover {}
 
 .classement {
+    background-color : $panel-color;
     tr:nth-child(1), tr:nth-child(2), tr:nth-child(3) {
         .rank-star:before {
             content: "\f005";
@@ -787,7 +814,6 @@ stats
     @extend .panel;
     @extend .panel-default;
     margin: 20px;
-    background-color: #EBEBEB;
     &.chart {
         background-color: #FEFEFE;
     }
@@ -839,6 +865,20 @@ box HOme
     vertical-align: center;
 }
 
+.panel-movie{
+    float: left;
+    box-shadow: 1px 2px 5px 1px #DDD;
+    width: 250px;
+    background: white;
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+    height:  350px ;
+}
+
+.bocks-center{
+  margin : auto;
+}
 /*
 Background boyd
 */

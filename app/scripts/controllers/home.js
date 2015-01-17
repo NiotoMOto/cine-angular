@@ -17,20 +17,7 @@ angular.module('cineApp').controller('HomeCtrl', function($scope, restService, i
     $scope.rate = 0;
     var currentUser = userService.user;
     $scope.currentUser = userService.user;
-    $scope.highchartsNG = {
-        xAxis: {
-            categories: ['Vues']
-        },
-        options: {
-            chart: {
-                type: 'bar'
-            }
-        },
-        title: {
-            text: 'Films vu'
-        },
-        loading: false
-    };
+    $rootScope.pageTitle = 'ajout d\'un film';
     $scope.init = function() {
         $rootScope.animation = '';
         userRess.query().$promise.then(function(data) {
@@ -55,7 +42,7 @@ angular.module('cineApp').controller('HomeCtrl', function($scope, restService, i
         if (search) {
             imdbMovieRessource.query({
                 query: search,
-                search_type : 'ngram'
+                search_type: 'ngram'
             }).$promise.then(function(data) {
                 $scope.listMovie = data;
             });
@@ -72,14 +59,13 @@ angular.module('cineApp').controller('HomeCtrl', function($scope, restService, i
         $scope.opened = true;
     };
 
-    function resetForm(){
-        $scope.rate = 0 ;
+    function resetForm() {
+        $scope.rate = 0;
         $scope.date = null;
         $scope.movie.movie = null;
     }
-    
-    $scope.$watch('movie.movie', function(movie){
-        if(!$scope.date && $scope.movie.movie){
+    $scope.$watch('movie.movie', function(movie) {
+        if (!$scope.date && $scope.movie.movie) {
             $scope.date = movie.release_date;
         }
     });
@@ -88,7 +74,7 @@ angular.module('cineApp').controller('HomeCtrl', function($scope, restService, i
         var viewMovie = {};
         viewMovie.note = $scope.rate;
         viewMovie.prix = $scope.prix;
-        viewMovie.date = $scope.date ;
+        viewMovie.date = $scope.date;
         viewMovie.commentaire = $scope.commentaire;
         var filter = {};
         filter.movie = movie.id;
@@ -105,7 +91,7 @@ angular.module('cineApp').controller('HomeCtrl', function($scope, restService, i
                 if (window.confirm('Vous avez déja noté ce film, mettre a jour ?')) {
                     viewMoviesRess.update({
                         viewMovie: viewMovie
-                    }).$promise.then(function(){
+                    }).$promise.then(function() {
                         toastr.success('Avis mis a jour');
                         historyService.add('a mis à jour son avis sur', 'update', currentUser, movie);
                         resetForm();
@@ -148,37 +134,11 @@ angular.module('cineApp').controller('HomeCtrl', function($scope, restService, i
             }
         });
     };
-    $scope.refreshChart = function(total) {
-        $scope.highchartsNG.series = [];
-        var seriesArray = $scope.highchartsNG.series;
-        var serie = [];
-        seriesArray.push({
-            name: 'total',
-            data: serie
-        });
-        angular.forEach($scope.users, function(user) {
-            viewMoviesRess.query({
-                filter: true,
-                user: user.id
-            }).$promise.then(function(data) {
-                serie = [];
-                if (data) {
-                    serie.push(data.length);
-                    seriesArray.push({
-                        name: user.username,
-                        data: serie
-                    });
-                }
-            });
-        });
-        serie.push(total);
-    };
 
     function getMovies() {
         moviesRess.query().$promise.then(function(data) {
             $scope.movies = data;
             incraseTotal($scope.movies.length);
-            $scope.refreshChart($scope.movies.length);
         });
     }
     $scope.init();

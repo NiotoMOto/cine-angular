@@ -35,6 +35,13 @@ angular.module('cineApp').service('restService', function restService($resource)
                     method: 'GET',
                     isArray: true
                 },
+                'search': {
+                    url: API_URL + '/' + shema + 's/search',
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                },
                 'calcul': {
                     url: API_URL + '/' + shema + '/:id/' + control,
                     method: 'GET'

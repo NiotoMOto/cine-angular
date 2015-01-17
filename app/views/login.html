@@ -1,0 +1,14 @@
+<div class="  row">
+    <div class="col-md-12">
+        <div class="panel well panel-default">
+            <div class="">
+                <h1>Qui etes-vous ?</h1>
+            </div>
+            <div class="panel-body">
+                <form name="appEnter" ng-submit="enter()">
+                <p class="lead"> <select class="form-control" placeholder="Pseudos" required ng-model="user" ng-options="user as user.username for user in users"></select></p>
+                <p class="text-center"><button ng-disabled="!appEnter.$valid"  type="submit" class="btn btn-primary">Entrez</button></p>
+            </div>
+        </form>
+    </div>
+</div>

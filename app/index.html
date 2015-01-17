@@ -1,8 +1,8 @@
 <!doctype html>
-<html class="no-js">
+<html ng-app="cineApp" class="no-js">
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>CineApp {{pageTitle}}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -21,9 +21,9 @@
         <!-- endbuild -->
     </head>
     <div class="background-image"></div>
-    <body class="content" ng-app="cineApp" ng-controller="IndexCtrl">
+    <body class="content"  ng-controller="IndexCtrl">
         <!--[if lt IE 7]>
-                                    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+                                                            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <!-- Add your site or application content here -->
         <div class="">
@@ -40,7 +40,8 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li ng-class="{active : isActive('/')}"><a href="#/main">Changer d'utilisateur</a></li>
-                        <li ng-class="{active : isActive('home')}"><a href="#/home">Ajout film</a></li>
+                        <li ng-class="{active : isActive('home')}"><a href="#/home">Acceuil</a></li>
+                        <li ng-class="{active : isActive('addMovie')}"><a href="#/addMovie">Ajout d'un film</a></li>
                         <li ng-class="{active : isActive('historique')}"><a href="#/historique/{{userService.user.id}}">Historique</a></li>
                         <li ng-class="{active : isActive('movie')}"><a href="#/movies">Tous les films</a></li>
                         <li ng-class="{active : isActive('stats/user') || isActive('stats/movie') }" class="dropdown open">
@@ -52,18 +53,43 @@
                         </li>
                         <li ng-class="{active : isActive('logs')}"><a href="#/logs">Activité</a></li>
                     </ul>
+
+                    <form class="navbar-form navbar-brand" >
+                            <ui-select ng-model="movie.movie"
+                            theme="bootstrap"
+                            ng-disabled="disabled"
+                            reset-search-input="false"
+                            >
+                            <ui-select-match placeholder="Films...">{{movie.movie.title}}</ui-select-match>
+                            <ui-select-choices style="min-width: 600px;" repeat="movie in listMovie track by $index"
+                            refresh="refreshMovies($select.search)"
+                            refresh-delay="0">
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <image ng-if="movie.imdbMovie.poster_path" class="img-responsive" src="http://image.tmdb.org/t/p/w45/{{movie.imdbMovie.poster_path}}" />
+                                </div>
+                                <div class="col-xs-8">
+                                    <h4 ng-bind-html="movie.title  | highlight: $select.search"></h4>
+                                </div>
+                                <div class="col-xs-2">
+                                    <span class="pull-right" ng-bind-html="movie.imdbMovie.release_date | date:mediumDate"></span>
+                                </div>
+                            </div>
+                            </ui-select-choices>
+                            </ui-select>
+                    </form>
                 </div>
             </nav>
             <div class="{{animated}} main-container {{container ||'container'}}" ng-view=""></div>
         </div>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
         <script>
-                                    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-                                    ga('create', 'UA-XXXXX-X');
-                                    ga('send', 'pageview');
+                                                            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                                            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                                            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                                            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                                                            ga('create', 'UA-XXXXX-X');
+                                                            ga('send', 'pageview');
         </script>
         <!-- build:js(.) scripts/oldieshim.js -->
         <!--[if lt IE 9]>
@@ -132,11 +158,13 @@
         <script src="scripts/services/historyservice.js"></script>
         <script src="scripts/controllers/logs.js"></script>
         <script src="scripts/controllers/stats/movie.js"></script>
-        <script src="scripts/controllers/usercontrollertemplate.js"></script>       
+        <script src="scripts/controllers/usercontrollertemplate.js"></script>
         <script src="scripts/directives/vectomap.js"></script>
         <script src="scripts/controllers/map.js"></script>
         <script src="scripts/libs/jquery-jvectormap-2.0.1.min.js"></script>
         <script src="scripts/libs/jquery-jvectormap-world-mill-en.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/searchresult.js"></script>
         <!-- endbuild -->
     </body>
 </html>

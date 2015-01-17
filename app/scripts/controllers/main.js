@@ -14,6 +14,8 @@ angular.module('cineApp').controller('MainCtrl', function($scope, restService, u
     $scope.viewOptions = {};
     $scope.viewOptions.createdAt = true;
     $rootScope.container = 'container-fluid';
+
+    $rootScope.pageTitle = 'Accueil';
     userRess.query().$promise.then(function(data) {
         $scope.users = data;
     });
@@ -37,7 +39,7 @@ angular.module('cineApp').controller('MainCtrl', function($scope, restService, u
 
     function getViewsInfo() {
         viewMovieRess.query({
-            limit: 10,
+            limit: 20,
             group : 'MovieId',
             order : 'Movie.createdAt DESC'
         }).$promise.then(function(data) {

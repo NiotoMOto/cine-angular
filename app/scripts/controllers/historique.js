@@ -14,6 +14,8 @@ angular.module('cineApp').controller('HistoriqueCtrl', function($scope, $routePa
     var userRess = restService.getRessource('user');
     $scope.currentUser = userService.user;
     $scope.dates = [];
+
+    $rootScope.pageTitle = 'historique';
     $scope.init = function() {
     	getUser();
     };

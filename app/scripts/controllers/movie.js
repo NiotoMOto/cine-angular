@@ -41,7 +41,7 @@ angular.module('cineApp').controller('MovieCtrl', function($scope, $routeParams,
             user: user
         }).$promise.then(function() {
             toastr.success('Avis enregistré');
-            historyService.add('a ajouté '+user.username+' sur le film ' , 'create', $scope.currentUser, $scope.movie);
+            historyService.add('a ajouté ' + user.username + ' sur le film ', 'create', $scope.currentUser, $scope.movie);
             getViewsInfo();
         });
     }
@@ -59,6 +59,7 @@ angular.module('cineApp').controller('MovieCtrl', function($scope, $routeParams,
             id: id
         }).$promise.then(function(data) {
             $scope.movie = data;
+            $rootScope.pageTitle = data.title;
             updateMoyenne();
             getViewsInfo();
             imdbMovieRessource.get({

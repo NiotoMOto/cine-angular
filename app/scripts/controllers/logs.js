@@ -6,10 +6,11 @@
  * # LogsCtrl
  * Controller of the cineApp
  */
-angular.module('cineApp').controller('LogsCtrl', function($scope, historyService, restService, $routeParams) {
+angular.module('cineApp').controller('LogsCtrl', function($scope, historyService, restService, $routeParams, $rootScope) {
     var user = $routeParams.id;
     var movie = $routeParams.movie;
     var historyRess = restService.getRessource('historique');
+    $rootScope.pageTitle = 'historique';
     if (user) {
         historyRess.query({
         	filter : true,

@@ -63,6 +63,7 @@ angular.module('cineApp').controller('UserCtrl', function($scope, $routeParams, 
             id: id
         }).$promise.then(function(data) {
             $scope.user = data;
+            $rootScope.pageTitle = data.username;
         });
         userRess.query().$promise.then(function(data) {
             $scope.totalUser = data.length;
